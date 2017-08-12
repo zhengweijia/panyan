@@ -1,0 +1,34 @@
+/* register.wxss */
+.container {
+  padding: 0 38px;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 60rpx 0 0;
+  border-radius: 50%;
+}
+
+.reg-form {
+  width: 100%;
+  margin: 25rpx;
+}
+
+
+#phone {
+  width: auto;
+  display: inline-block;
+}
+
+form .label-text:first-child {
+   margin-top: 0;
+}
+.label-text {
+  margin-top: 60rpx;
+}

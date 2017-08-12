@@ -1,51 +1,13 @@
 {
-  "name": "node-app",
-  "description": "A Node.js app scaffold",
+  "name": "qcloud-weapp-client-demo",
   "version": "1.0.0",
-  "author": "smalldragonluo",
-  "homepage": "https://github.com/smalldragonluo/node-app#readme",
-  "main": "./src/server.js",
-  "scripts": {
-    "start": "node ./src/server.js",
-    "dev": "NODE_ENV=local node --harmony ./src/server.js",
-    "build": "webpack",
-    "test": "mocha ./test/*.test.js",
-    "models": "sequelize-auto -o './auto-models' -d yandian -h localhost -u root -p 3306 -x 123 -e mysql"
-  },
+  "description": "腾讯云微信小程序客户端 DEMO",
+  "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/smalldragonluo/node-app.git"
+    "url": "https://github.com/tencentyun/weapp-client-demo.git"
   },
-  "keywords": [
-    "Node.js",
-    "Koa",
-    "app",
-    "scaffold"
-  ],
-  "dependencies": {
-    "chai": "^4.1.0",
-    "css-loader": "0.15.2",
-    "koa": "^2.3.0",
-    "koa-bodyparser": "^4.2.0",
-    "koa-lusca": "^2.2.0",
-    "koa-router": "^7.2.1",
-    "koa-serve": "^0.1.7",
-    "koa-session": "^5.5.0",
-    "koa-static": "^4.0.1",
-    "koa-validator": "^0.6.4",
-    "less": "^2.5.1",
-    "less-loader": "~2.2.2",
-    "mysql2": "^1.4.0",
-    "sequelize": "^4.4.2",
-    "style-loader": "0.12.3",
-    "webpack": "^1.15.0",
-    "winston": "^2.3.1",
-    "xtemplate": "^4.7.2",
-    "xtpl": "^3.3.0"
-  },
-  "devDependencies": {},
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/smalldragonluo/node-app/issues"
-  }
+  "keywords": [],
+  "author": "CFETeam",
+  "license": "MIT"
 }

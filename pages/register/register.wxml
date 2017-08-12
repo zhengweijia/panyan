@@ -1,0 +1,25 @@
+<!--register.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block>
+      <image class="userinfo-avatar" src="{{regUserInfo.avatarUrl}}" background-size="cover"></image>
+    </block>
+  </view>
+
+  <view class="reg-form">
+  <form bindsubmit="formSubmit">
+
+    <label class="title-label" for="name">选手姓名</label>
+    <view class="section input-section">
+      <input id="name" class="default" type="text" placeholder="请输入您的真是姓名" focus />
+    </view>
+
+    <label class="title-label" for="name">手机号码</label>
+    <view class="section input-section">
+       <text>+86 | </text> <input id="phone" class="default" type="text" placeholder="请输入您的手机号码" focus />
+    </view>
+
+    <button class="{{submitButtonClass}}" form-type="submit" type="default" size="default" disabled="{{submitButtonStatus}}" hover-class="button-hover"> 下一步 </button>
+  </form>
+  </view>
+</view>
