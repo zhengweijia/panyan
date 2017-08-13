@@ -1,0 +1,45 @@
+/* my.wxss */
+@import '../common.wxss';
+.top {
+  background-color: #2b3642;
+  padding: 30rpx 0;
+  text-align: center;
+  color: #fff;
+  font-size: 26rpx;
+  line-height: 1em;
+}
+.top .circle {
+  width: 265rpx;
+  height: 265rpx;
+  border: 1rpx solid #646d7a;
+  border-radius: 50%;
+  margin: 0 auto;
+  padding: 20rpx;
+}
+.top .circle>view {
+  margin-top: 25rpx;
+}
+.top .circle>view:first-child {
+  margin-top: 45rpx;
+}
+.top .circle>view:last-child {
+  color: #505f6c;
+  font-size: 22rpx;
+}
+.top .all-money text{
+  padding: 0 18rpx;
+  margin-top: 25rpx;
+  background-color: #e56a60;
+  color: #fff;
+  border-radius: 19rpx;
+  line-height: 38rpx;
+  height: 38rpx;
+  font-size: 22rpx;
+  display: inline-block;
+
+  box-shadow:0 0 10rpx #F56E4E;
+}
+.top .num text {
+  font-size: 80rpx;
+  line-height: 1em;
+}

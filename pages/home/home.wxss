@@ -1,1 +1,53 @@
 /* home.wxss */
+
+.userinfo {
+  background-color: #2b3642;
+  padding: 70rpx 0;
+}
+.userinfo-avatar {
+  flex: 0.55;
+  text-align: right;
+}
+.userinfo-avatar image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: 10rpx solid #f56e4e;
+  box-shadow:0 0 20rpx #F56E4E;
+}
+.userinfo-avatar .name {
+  padding: 20rpx 0 0 86rpx;
+  width: 180rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 22rpx;
+}
+
+table {
+  width: 100%;
+}
+table tr {
+  display: block;
+  font-size: 28rpx;
+  line-height: 1em;
+  padding: 22rpx 0 22rpx 45rpx;
+}
+table tr td:first-child {
+  color: #8390a6;
+  text-align: right;
+  width: 80rpx;
+}
+table tr:first-child td {
+  color: #fff;
+}
+
+table .money {
+  color: #df674b;
+}
+table .money text {
+  font-size: 48rpx;
+}
+table .num {
+  font-size: 30rpx;
+  color: #df674b;
+}

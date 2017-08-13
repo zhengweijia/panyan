@@ -1,2 +1,96 @@
 <!--home.wxml-->
-<text>home.wxml</text>
+<view class="home">
+
+  <view class="weui-flex userinfo">
+    <view class="userinfo-avatar">
+      <image src="{{userInfo.avatar_url}}" background-size="cover"></image>
+      <view class="name">{{userInfo.name}}</view>
+    </view>
+    <view class="weui-flex__item info">
+      <table>
+        <tr>
+          <td>选手编号：</td>
+          <td>{{userInfo.id}}</td>
+        </tr>
+        <tr>
+          <td>我的奖金：</td>
+          <td class="money">￥<text> {{viewData.money}}</text></td>
+        </tr>
+        <tr>
+          <td>已完成线路：</td>
+          <td class="num"><text>{{viewData.lineNum}} </text>条</td>
+        </tr>
+      </table>
+    </view>
+  </view>
+
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <navigator url="/pages/line/all/all" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>所有路线</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <navigator url="/pages/line/my/my" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>已完成的路线</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <navigator url="/pages/report/report" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>我的成绩单</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <navigator url="/pages/detail/detail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>奖金明细</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <navigator url="/pages/about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>关于格凸国际攀岩节</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <navigator url="/pages/notice/notice" class="weui-cell weui-cell_access" hover-c lass="weui-cell_active">
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>注意事项</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+</view>

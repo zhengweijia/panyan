@@ -1,0 +1,29 @@
+/* register.wxss */
+.container {
+  /* padding: 0 38px; */
+}
+
+.container form {
+    width: 100%;
+}
+
+.weui-cell__ft_in-radio {
+  min-width: 60rpx;
+}
+
+.custom-btn {
+  margin: 140rpx 38rpx 100rpx;
+}
+.border-before {
+  position: relative;
+}
+.weui-cells {
+  margin-top: 50rpx;
+}
+.weui-cells:first-child {
+  margin-top: 60rpx;
+}
+.weui-cells .border-before:before{content:" ";position:absolute;left:0;top:0;right:0;height:1px;border-top:1rpx solid #d9d9d9;color:#d9d9d9;left:15px}
+.container .border-before:first-child:before {
+  display: none;
+}

@@ -57,7 +57,7 @@ Page({
 	 */
 	onLoad: function () {
 		// 检查没有注册，则跳转到注册页面
-		app.checRegisterAndRedirectTo();
+		app.checkRegisterAndRedirectTo();
 	},
 	//事件处理函数
 	toHomePage: function () {

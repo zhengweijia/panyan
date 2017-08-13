@@ -1,0 +1,82 @@
+<!--register.wxml-->
+<view class="container" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <form bindsubmit="formSubmit">
+
+    <view class="weui-cells weui-cells_after-title">
+      <picker class="border-before" id="height" bindchange="bindPickerChange" value="{{viewData.heightDefaultIndex}}" range="{{viewData.heightList}}">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">身高</view>
+          <view class="weui-cell__ft" wx:if="{{!viewData.heightFirst}}">{{viewData.heightList[viewData.heightDefaultIndex]}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access" ></view>
+        </view>
+      </picker>
+
+      <picker class="border-before" id="weight" bindchange="bindPickerChange" value="{{viewData.weightDefaultIndex}}" range="{{viewData.weightList}}">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">体重</view>
+          <view class="weui-cell__ft" wx:if="{{!viewData.weightFirst}}">{{viewData.weightList[viewData.weightDefaultIndex]}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access" ></view>
+
+        </view>
+      </picker>
+
+      <picker class="border-before" id="gender" bindchange="bindPickerChange" value="{{viewData.genderDefaultIndex}}" range="{{viewData.genderList}}">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">性别</view>
+          <view class="weui-cell__ft" wx:if="{{!viewData.genderFirst}}">{{viewData.genderList[viewData.genderDefaultIndex]}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access" ></view>
+
+        </view>
+      </picker>
+
+      <picker class="border-before" id="clothes_size" bindchange="bindPickerChange" value="{{viewData.clothesSizeDefaultIndex}}" range="{{viewData.clothesSizeList}}">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">衣服尺寸</view>
+          <view class="weui-cell__ft" wx:if="{{!viewData.clothesSizeFirst}}">{{viewData.clothesSizeList[viewData.clothesSizeDefaultIndex]}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access" ></view>
+
+        </view>
+      </picker>
+    </view>
+
+
+    <view class="weui-cells weui-cells_after-title">
+      <picker class="border-before" id="climbing_time" bindchange="bindPickerChange" value="{{viewData.climbingTimeDefaultIndex}}" range="{{viewData.climbingTimeList}}">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">攀爬时间</view>
+          <view class="weui-cell__ft" wx:if="{{!viewData.climbingTimeFirst}}">{{viewData.climbingTimeList[viewData.climbingTimeDefaultIndex]}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access" ></view>
+
+        </view>
+      </picker>
+
+      <picker class="border-before" id="climbing_ability" bindchange="bindPickerChange" value="{{viewData.climbingAbilityDefaultIndex}}" range="{{viewData.climbingAbilityList}}">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">攀爬能力</view>
+          <view class="weui-cell__ft" wx:if="{{!viewData.climbingAbilityFirst}}">{{viewData.climbingAbilityList[viewData.climbingAbilityDefaultIndex]}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access" ></view>
+
+        </view>
+      </picker>
+
+    </view>
+
+
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group bindchange="typeRadioChange">
+        <label class="weui-cell weui-check__label" wx:for="{{viewData.userTypeMap}}" wx:key="value">
+          <radio class="weui-check" id="type" value="{{item.value}}" checked="{{item.checked}}"/>
+
+          <view class="weui-cell__bd">{{item.name}}</view>
+          <view class="weui-cell__ft">￥{{item.price}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-radio" >
+            <icon class="weui-icon-radio" type="success_no_circle" size="16" wx:if="{{item.checked}}"></icon>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+
+
+    <button class="custom-btn" form-type="submit" type="primary" size="default" disabled="{{!viewData.submitButtonStatus}}" hover-class="button-hover">立即报名</button>
+  </form>
+</view>

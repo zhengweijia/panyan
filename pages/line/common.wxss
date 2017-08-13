@@ -1,0 +1,28 @@
+.diffcult-1 {
+  background-image:linear-gradient(180deg,#69ba6e,#d3e450);
+  border-radius: 50%;
+}
+.diffcult-2 {
+  background-color: #ffe50b;
+  /*background-image:linear-gradient(180deg,#69ba6e,#d3e450);*/
+  border-radius: 50%;
+}
+.diffcult-3 {
+  background-color: #fda425;
+  border-radius: 50%;
+}
+.diffcult-4 {
+  background-color: #fa454d;
+  border-radius: 50%;
+}
+.detail .text {
+  color: #838792;
+  font-size: 18rpx;
+}
+.detail .text>view:first-child {
+  font-size: 22rpx;
+  color: #5a5f6e;
+}
+.detail .text .red {
+  color: #e36059;
+}
