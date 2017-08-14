@@ -1,2 +1,69 @@
-<!--all.wxml-->
-<text>查询所有路线</text>
+<!--my.wxml-->
+<view class="all">
+  <view class="top">
+    <view bindtap="search" id="bonus" class="{{searchData.bonus}}" >线路奖金</view>
+    <view bindtap="search" id="difficult" class="{{searchData.difficult}}">线路难度</view>
+    <view bindtap="search" id="notHas" class="{{searchData.notHas}}"><text>未攀登</text></view>
+    <view bindtap="showMore">筛选</view>
+  </view>
+  <view class="more {{searchData.activeMore?'on':''}}">
+    <view class="section">
+      <view class="title">选择难度</view>
+      <view class="content flex">
+        <picker class="border-before" id="min" bindchange="bindPickerChange" value="{{viewData.minIndex}}" range="{{viewData.minList}}" range-key="{{useLineDifficultyStandard}}">
+          <view class="">
+            <button class="weui-btn" type="default" plain="true">最小难度 <text class="red">{{viewData.minList[viewData.minIndex][useLineDifficultyStandard]}}</text></button>
+          </view>
+        </picker>
+        <picker class="border-before" id="max" bindchange="bindPickerChange" value="{{viewData.maxIndex}}" range="{{viewData.maxList}}" range-key="{{useLineDifficultyStandard}}">
+          <view class="">
+            <button class="weui-btn" type="default" plain="true">最大难度 <text class="red">{{viewData.maxList[viewData.maxIndex][useLineDifficultyStandard]}}</text></button>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="title">选择区域</view>
+      <view class="content flex">
+        <view wx:for="{{areaList}}" wx:key="id" bindtap="selectArea" data-value="{{item.id}}">
+          <view class="box {{item.id == searchData.area ? 'on':''}}" >{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section ground" wx:if="viewData.waitGroundList.length > 0">
+      <view class="title">选择岩场</view>
+      <view class="content">
+        <view wx:for="{{viewData.waitGroundList}}" wx:key="id" bindtap="selectGround" data-value="{{item.id}}">
+          <view class="box {{item.className}}">{{item.name}}</view>
+        </view>
+
+      </view>
+    </view>
+
+    <view class="btns">
+      <view bindtap="reset">
+        重置
+      </view>
+      <view bindtap="showMore">
+        完成
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd">
+      <navigator url="" wx:for="{{searchData.searchLineList}}" wx:key="id" class="weui-media-box weui-media-box_appmsg detail" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg diffcult-{{item.lineDifficulty.zoomIndex}}">
+          {{item.lineDifficulty[useLineDifficultyStandard]}}
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg text">
+          <view class="weui-media-box__title">{{item.ground.area.name}}{{item.ground.name}}{{item.name}} 难度{{item.lineDifficulty[useLineDifficultyStandard]}}  线路总奖金<text class="red">￥{{item.bonus}}</text></view>
+          <view class="weui-media-box__desc">当前完成线路人数 <text class="red"> {{item.finish_num}}</text></view>
+        </view>
+      </navigator>
+
+    </view>
+  </view>
+</view>

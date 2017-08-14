@@ -1,2 +1,131 @@
 /* all.wxss */
 @import '../common.wxss';
+.all {
+  position: relative;
+}
+.top {
+  display: flex;
+  border-bottom: 1rpx solid #e5e5e5;
+  background-color: #fff;
+}
+.top>view {
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  color: #979797;
+  padding: 20rpx 0;
+  height: 42rpx;
+  line-height: 42rpx;
+}
+.top>view.up,
+.top>view.down {
+  color: #f56e4e;
+}
+.top>view.up:after {
+   content: ' ▲';
+  font-size: 16rpx;
+}
+.top>view.down:after {
+  content: ' ▼';
+  font-size: 16rpx;
+}
+.top>view:last-child {
+  border-left: 1rpx solid #e5e5e5;
+}
+.top>view:last-child:after {
+  content: '♦';
+  position: relative;
+  left: 5rpx;
+  color: #979797;
+}
+.top view>text{
+  display: inline-block;
+  border: 1rpx solid #e5e5e5;
+  border-radius: 10rpx;
+  padding: 0 10rpx;
+  line-height: 42rpx;
+}
+.top view.has>text {
+  background-color: #f56e4e;
+  border: 1rpx solid #f56e4e;
+  color: #fff;
+}
+
+.more {
+  display: none;
+  background-color: #fff;
+  position: absolute;
+  top: 85rpx;
+  width: 100%;
+  z-index: 50;
+}
+.more.on {
+  display: block;
+}
+
+.more .section {
+  padding: 45rpx 55rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.more .section.ground {
+  padding: 45rpx 55rpx 35rpx;
+}
+.more .section .content {
+  font-size: 28rpx;
+}
+.more .section .content.flex {
+  display: flex;
+}
+.more .section .content.flex>view,
+.more .section .content.flex picker {
+  flex:1;
+}
+.more .section .content button {
+  font-size: 28rpx;
+  width: 80%;
+}
+.more .section .title {
+  color: #777;
+  font-size: 24rpx;
+  margin-bottom: 16rpx;
+}
+.more .section.ground .content>view{
+  display: inline-block;
+  width: 25%;
+}
+.more .section.ground .content .box{
+  margin: 0 auto 20rpx;
+}
+.more .box {
+  border: 1rpx solid #5a5f6e;
+  font-size: 27rpx;
+  color: #5a5f6e;
+  background-color: #fff;
+  text-align: center;
+  padding: 14rpx 0;
+  margin: 0 auto;
+  width: 80%;
+  word-wrap: break-word
+}
+.more .box.on {
+  border: 1rpx solid #f56e4e;
+  color: #fff;
+  background-color: #f56e4e;
+}
+
+.btns {
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  color: #fff;
+  display: flex;
+}
+.btns>view {
+  flex: 1;
+}
+.btns>view:first-child {
+  background-color: #5a5f6e;
+}
+.btns>view:last-child {
+  background-color: #f56e4e;
+}

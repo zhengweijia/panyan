@@ -57,6 +57,7 @@ App({
 					areaMap: {},
 					groundMap: {},
 					lineMap: {},
+					lineDifficultyList: [],
 				};
 				if(!!result.data && result.data.code == '0') {
 					let data = result.data.data;
@@ -74,7 +75,7 @@ App({
 							}
 						}
 					}
-					this.globalData.lineDifficultyList = data.lineDifficultyList;
+					ret.lineDifficultyList = data.lineDifficultyList;
 
 					for (let area of areaList) {
 						ret.areaMap[area.id] = area;
@@ -132,8 +133,8 @@ App({
 						userInfo: null,
 						resultList: null,
 						lineAllInfo: null,
-						finishLineNum: null,
-						hadMoney: null,
+						finishLineNum: 0,
+						hadMoney: 0,
 					};
 					if(result.data.code == '0') {
 						let data = result.data.data;
@@ -148,6 +149,8 @@ App({
 						// 完整已经用户已经完成的线路信息
 						for(let res of ret.resultList) {
 							if(!!res.line_id && !!ret.lineAllInfo.lineMap && !!ret.lineAllInfo.lineMap[res.line_id]) {
+								// 在所有线路列表里，标记下当前用户已经完成该线路了
+								ret.lineAllInfo.lineMap[res.line_id].isFinish = true;
 								res.line = ret.lineAllInfo.lineMap[res.line_id];
 							}
 
@@ -182,8 +185,36 @@ App({
 		};
 		if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
 		for (let k in o)
-			if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+			if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
 		return fmt;
+	},
+
+	diffDate : function (start, end) {
+		let date1=new Date(start);    //开始时间
+		let date2=new Date(end);    //结束时间
+		let date3=date2.getTime()-date1.getTime(); //时间差秒
+
+		let ret = '';
+//计算出相差天数
+		let days=Math.floor(date3/(24*3600*1000));
+		if(days>0) ret = ret+ days+'天';
+//计算出小时数
+		let leave1=date3%(24*3600*1000);  //计算天数后剩余的毫秒数
+		let hours=Math.floor(leave1/(3600*1000));
+		if(hours>0 || ret!=='') ret = ret+ hours+'小时';
+
+
+//计算相差分钟数
+		let leave2=leave1%(3600*1000);        //计算小时数后剩余的毫秒数
+		let minutes=Math.floor(leave2/(60*1000));
+		if(minutes>0 || ret!=='') ret = ret+ minutes+'分';
+
+//计算相差秒数
+		let leave3=leave2%(60*1000);     //计算分钟数后剩余的毫秒数
+		let seconds=Math.round(leave3/1000);
+		if(seconds>0 || ret!=='') ret = ret+ seconds+'秒';
+
+		return ret;
 	}
 
 });

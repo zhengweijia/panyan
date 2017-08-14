@@ -43,3 +43,9 @@
   font-size: 80rpx;
   line-height: 1em;
 }
+
+.no-data {
+  text-align: center;
+  color: #b1bec7;
+  padding: 80rpx 0 0;
+}

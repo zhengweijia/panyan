@@ -1,1 +1,4 @@
 /* about.wxss */
+.page {
+  padding: 30rpx;
+}

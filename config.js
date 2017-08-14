@@ -7,7 +7,8 @@ let host = '64757925.qcloud.la';
 
 let config = {
 
-	// 下面的地址配合云端 Demo 工作
+	useLineDifficultyStandard:'usa',//使用的难度标准
+
 	service: {
 		host,
 

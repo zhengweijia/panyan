@@ -1,13 +1,13 @@
 {
   "pages": [
-    "pages/line/my/my",
-
     "pages/home/home",
+    "pages/line/my/my",
+    "pages/line/all/all",
+
     "pages/index/index",
     "pages/chat/chat",
     "pages/register/two/register",
     "pages/register/one/register",
-    "pages/line/all/all",
     "pages/report/report",
     "pages/detail/detail",
     "pages/about/about",

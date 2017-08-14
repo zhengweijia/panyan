@@ -1,5 +1,7 @@
 // my.js
 const app = getApp();
+let config = require('../../../config');
+
 Page({
 
   /**
@@ -13,8 +15,7 @@ Page({
 			lineNum: 0,
 			resultList: [],//我已经完成的线路
 		},
-		dateFormat: null
-
+		useLineDifficultyStandard: config.useLineDifficultyStandard, //难度使用什么标准
 	},
 
   /**
@@ -25,11 +26,28 @@ Page({
 
 		app.getAllInfoAboutMe((data)=>{
 			if(!!data.userInfo) that.data.userInfo = data.userInfo;
-			if(!!data.userInfo) that.data.lineAllInfo  = data.lineAllInfo;
-			if(!!data.userInfo) that.data.viewData.resultList = data.resultList;
+			if(!!data.lineAllInfo) that.data.lineAllInfo  = data.lineAllInfo;
 
-			if(!!data.userInfo) that.data.viewData.money = data.hadMoney;
-			if(!!data.userInfo) that.data.viewData.lineNum = data.finishLineNum;
+
+			if(!!data.hadMoney) that.data.viewData.money = data.hadMoney;
+			if(!!data.finishLineNum) that.data.viewData.lineNum = data.finishLineNum;
+			if(!!data.resultList){
+				// 预先处理数据，时间格式之类的
+				for (let res of data.resultList) {
+					// 完成时间
+					res.formatFinishDate = '';
+					if(!!res.end_time) {
+						res.formatFinishDate = app.dateFormat(res.end_time, 'yyyy.M.d h:m');
+					}
+
+					res.gameTime = '';//用时
+					if(!!res.end_time && !!res.start_time) {
+						res.gameTime = app.diffDate(res.start_time, res.end_time);
+					}
+					that.data.viewData.resultList.push(res);
+				}
+
+			}
 
 			that.setData({
 				userInfo: that.data.userInfo,
@@ -38,7 +56,6 @@ Page({
 			});
 		});
 
-		this.data.dateFormat = app.dateFormat;
   },
 
   /**
