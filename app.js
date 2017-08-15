@@ -69,7 +69,7 @@ App({
 					// 给每个难度确定区间
 					for (let d of data.lineDifficultyList) {
 						for (let zoom of config.difficultyZoom) {
-							if(d.difficulty>=zoom.min && d.difficulty<zoom.max) {
+							if(d.difficulty>=zoom.min && d.difficulty<=zoom.max) {
 								d.zoomIndex = zoom.index;
 								break;
 							}

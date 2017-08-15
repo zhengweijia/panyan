@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/register/judgment/judgment",
+
     "pages/home/home",
     "pages/line/my/my",
     "pages/line/all/all",
-
     "pages/index/index",
     "pages/chat/chat",
     "pages/register/two/register",
@@ -12,6 +13,7 @@
     "pages/detail/detail",
     "pages/about/about",
     "pages/notice/notice"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

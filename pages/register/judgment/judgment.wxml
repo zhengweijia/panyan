@@ -1,0 +1,35 @@
+<!--register.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block>
+      <image class="userinfo-avatar" src="{{regUserInfo.avatar_url}}" background-size="cover"></image>
+    </block>
+  </view>
+
+  <view class="reg-form">
+    <form bindsubmit="formSubmit">
+
+      <label class="title-label" for="name">选手姓名 <text class="error-msg">{{errorMsg.name}}</text></label>
+      <view class="section input-section">
+        <input id="name" bindblur="bindBlur" class="default"  type="text" placeholder="请输入您的真是姓名" focus />
+      </view>
+
+      <label class="title-label" for="phone">手机号码 <text class="error-msg">{{errorMsg.phone}}</text></label>
+      <view class="section input-section phone-section">
+        <text decode="true">+86&nbsp;|&nbsp;</text> <input id="phone" bindblur="bindBlur" class="default" type="text" placeholder="请输入您的手机号码" />
+      </view>
+
+      <label class="title-label" for="email">邮箱 <text class="error-msg">{{errorMsg.email}}</text></label>
+      <view class="section input-section">
+        <input id="email" bindblur="bindBlur" class="default" type="text" placeholder="请输入您的邮箱" />
+      </view>
+
+      <label class="title-label" for="id_card">身份证 <text class="error-msg">{{errorMsg.id_card}}</text></label>
+      <view class="section input-section">
+        <input id="id_card" bindblur="bindBlur" class="default" type="text" placeholder="请输入您的身份证号" />
+      </view>
+
+      <button class="custom-btn {{submitButtonStatus}}" form-type="submit" type="primary" size="default" disabled="{{!submitButtonStatus}}" hover-class="button-hover"> 下一步 </button>
+    </form>
+  </view>
+</view>

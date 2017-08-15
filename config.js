@@ -7,7 +7,8 @@ let host = '64757925.qcloud.la';
 
 let config = {
 
-	useLineDifficultyStandard:'usa',//使用的难度标准
+	// useLineDifficultyStandard:'usa',//使用的难度标准
+	useLineDifficultyStandard:'fr',//使用的难度标准
 
 	service: {
 		host,
@@ -42,21 +43,21 @@ let config = {
 	difficultyZoom: [
 		{
 			min: 0,
-			max: 18,
+			max: 9,
 			index: 1
 		},
 		{
-			min: 18,
-			max: 26,
+			min: 10,
+			max: 14,
 			index: 2
 		},
 		{
-			min: 26,
-			max: 34,
+			min: 15,
+			max: 16,
 			index: 3
 		},
 		{
-			min: 34,
+			min: 17,
 			max: 100,
 			index: 4
 		}
