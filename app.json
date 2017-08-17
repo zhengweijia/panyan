@@ -1,19 +1,18 @@
 {
   "pages": [
-    "pages/register/judgment/judgment",
-
-    "pages/home/home",
-    "pages/line/my/my",
-    "pages/line/all/all",
+    "pages/judgment/register/judgment",
+    "pages/user/home/home",
+    "pages/user/line/my/my",
+    "pages/user/line/all/all",
     "pages/index/index",
     "pages/chat/chat",
-    "pages/register/two/register",
-    "pages/register/one/register",
-    "pages/report/report",
-    "pages/detail/detail",
-    "pages/about/about",
-    "pages/notice/notice"
-    
+    "pages/user/register/two/register",
+    "pages/user/register/one/register",
+    "pages/user/report/report",
+    "pages/user/detail/detail",
+    "pages/user/about/about",
+    "pages/user/notice/notice",
+    "pages/judgment/home/home"
   ],
   "window": {
     "backgroundTextStyle": "light",

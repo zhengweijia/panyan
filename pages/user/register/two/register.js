@@ -1,10 +1,10 @@
 // register.js
 const app = getApp();
 // 引入 QCloud 小程序增强 SDK
-let qcloud = require('../../../vendor/qcloud-weapp-client-sdk/index');
+let qcloud = require('../../../../vendor/qcloud-weapp-client-sdk/index');
 
 // 引入配置
-let config = require('../../../config');
+let config = require('../../../../config');
 let price = 0; //需要支付报名金额
 
 Page({
@@ -196,7 +196,7 @@ Page({
 							icon: 'success',
 							success:()=>{
 								wx.redirectTo({
-									url: '/pages/home/home'
+									url: '/pages/user/home/home'
 								})
 							}
 						});

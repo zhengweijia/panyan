@@ -1,6 +1,6 @@
 // my.js
 const app = getApp();
-let config = require('../../../config');
+let config = require('../../../../config');
 
 Page({
 

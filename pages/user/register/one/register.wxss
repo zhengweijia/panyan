@@ -1,9 +1,8 @@
-/* judgment.wxss */
 /* register.wxss */
 
 
 .container {
-  padding: 0 38px;
+  padding: 0 38rpx;
 }
 .userinfo {
   display: flex;
@@ -24,7 +23,6 @@
 }
 .reg-form button {
   margin: 100rpx 0 30rpx;
-
 }
 
 #phone {
@@ -33,13 +31,13 @@
 }
 
 form .title-label:first-child {
-  margin-top: 0;
+   margin-top: 0;
 }
 .title-label {
   margin-top: 45rpx;
 }
 .phone-section {
-  padding-bottom: 22rpx;
+    padding-bottom: 22rpx;
 }
 .phone-section text {
   float:left;

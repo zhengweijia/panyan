@@ -2,10 +2,10 @@
 
 const app = getApp();
 // 引入 QCloud 小程序增强 SDK
-let qcloud = require('../../../vendor/qcloud-weapp-client-sdk/index');
+let qcloud = require('../../../../vendor/qcloud-weapp-client-sdk/index');
 
 // 引入配置
-let config = require('../../../config');
+let config = require('../../../../config');
 Page({
 
   /**
@@ -45,6 +45,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+		wx.setNavigationBarTitle({ title: '注册' });
+
 		// 从本地拿目前有的用户信息
 		let value = app.globalData.userInfo;
 		if (value) {
@@ -125,7 +127,7 @@ Page({
 		if(this.data.submitButtonStatus) {
 			app.globalData.regUserInfo = this.data.regUserInfo; // 将信息填入全局保存
 			wx.redirectTo({
-        url: '/pages/register/two/register',
+        url: '/pages/user/register/two/register',
       });
 		}
 	},

@@ -1,0 +1,51 @@
+/* judgment.wxss */
+/* register.wxss */
+
+
+.container {
+  padding: 0 35rpx;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 60rpx 0 0;
+  border-radius: 50%;
+}
+
+.reg-form {
+  width: 100%;
+  margin: 40rpx 0 0;
+}
+.reg-form button {
+  margin: 77rpx 0 30rpx;
+}
+
+.reg-form .weui-label {
+  width: 113rpx;
+  border-right: 1px solid #979797;
+  text-align: center;
+  margin-right: 30rpx;
+}
+.reg-form .weui-cells_after-title {
+  background-color: inherit;
+}
+.reg-form .weui-cell_input {
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  border: 1rpx solid #aaa;
+  border-radius: 10rpx;
+  color: #9b9b9b;
+}
+.reg-form .weui-cell_input input {
+  color: #333;
+}
+.reg-form .weui-cell_input:before,
+.reg-form .weui-cell_input:after {
+  content: none;
+}

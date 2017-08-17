@@ -1,9 +1,9 @@
 // home.js
 const app = getApp();
 // 引入 QCloud 小程序增强 SDK
-let qcloud = require('../../vendor/qcloud-weapp-client-sdk/index');
+let qcloud = require('../../../vendor/qcloud-weapp-client-sdk/index');
 // 引入配置
-let config = require('../../config');
+let config = require('../../../config');
 
 
 Page({

@@ -1,0 +1,59 @@
+<!--register.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block>
+      <image class="userinfo-avatar" src="{{regUserInfo.avatar_url}}" background-size="cover"></image>
+    </block>
+  </view>
+
+  <view class="reg-form">
+    <view class="weui-cells weui-cells_after-title">
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">姓名</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input id="name" bindblur="bindBlur" class="weui-input" placeholder="请输入您的真是姓名"/>
+        </view>
+        <view class="weui-cell__ft" wx:if="{{!!errorMsg.name}}">
+          <icon type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">+86</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input id="phone" bindblur="bindBlur" class="weui-input" placeholder="请输入您的手机号"/>
+        </view>
+        <view class="weui-cell__ft" wx:if="{{!!errorMsg.phone}}">
+          <icon type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input id="id_card" bindblur="bindBlur" class="weui-input" placeholder="请输入您的身份证号"/>
+        </view>
+        <view class="weui-cell__ft" wx:if="{{!!errorMsg.id_card}}">
+          <icon type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input id="code" bindblur="bindBlur" class="weui-input" placeholder="请输入裁判邀请码"/>
+        </view>
+        <view class="weui-cell__ft" wx:if="{{!!errorMsg.code}}">
+          <icon type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+    </view>
+    <button bindtap="formSubmit" class="custom-btn {{submitButtonStatus}}" form-type="submit" type="primary" size="default" disabled="{{!submitButtonStatus}}" hover-class="button-hover"> 完成注册 </button>
+
+  </view>
+</view>

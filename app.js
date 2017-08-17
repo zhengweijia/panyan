@@ -18,6 +18,8 @@ App({
 	},
 
 	// 检查用户有没有注册，如果没有，跳转到注册页面
+	// call 回调，
+	// unAutoGo 如果用户没有注册不自动跳转注册页面
 	checkRegisterAndRedirectTo: function (call) {
 		qcloud.request({
 			// 检查有没有注册
@@ -37,8 +39,8 @@ App({
 				} else {
 					//未完善信息了，则跳转到完善信息页面
 					wx.redirectTo({
-						url: '/pages/register/one/register'
-						// url: '/pages/register/two/register'
+						url: '/pages/user/register/one/register'
+						// url: '/pages/user/register/two/register'
 					});
 				}
 			},
@@ -46,7 +48,39 @@ App({
 			}
 		});
 	},
+	// 仅仅检查有没有注册
+	checkRegister: function (call) {
+		qcloud.request({
+			// 检查有没有注册
+			url: config.service.URL+'user/checkRegister',
+			// 请求之前是否登陆，如果该项指定为 true，会在请求之前进行登录
+			login: true,
+			success: (result) => {
+				let ret = {
+					isRegister: false,
+					userInfo: {}
+				};
+				if(!!result.data.data && !!result.data.data.userInfo) {
+					this.globalData.userInfo = result.data.data.userInfo;
+					this.globalData.userInfo.avatar_url = this.globalData.userInfo.avatarUrl;
+					this.globalData.userInfo.nick = this.globalData.userInfo.nickName;
+					this.globalData.userInfo.openid = this.globalData.userInfo.openId;
+					ret.userInfo = this.globalData.userInfo;
+				}
 
+				if(!!result && !!result.data && result.data.code == '0') {
+					// 已经注册了
+					ret.isRegister = true;
+				} else {
+					//未完善信息了，则跳转到完善信息页面
+					ret.isRegister = false;
+				}
+				if(!!call) call(ret);
+			},
+			fail(error) {
+			}
+		});
+	},
 	// 获得线路信息
 	getAllLineInfo: function (call) {
 		qcloud.request({
