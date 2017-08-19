@@ -54,7 +54,6 @@ Page({
 				}
 			],
 
-
 		},
 
 
@@ -69,6 +68,7 @@ Page({
     if (!!app.globalData.regUserInfo) {
       this.data.regUserInfo = app.globalData.regUserInfo;
 			this.data.regUserInfo.type = '1';// 默认报名第一种
+			// this.data.regUserInfo.out_trade_no = '';//
     }
   	// 设置身高范围
 		let heightMin = 140;
@@ -175,58 +175,81 @@ Page({
 	},
 
 	formSubmit: function () {
+  	let that = this;
 		if(this.data.viewData.submitButtonStatus){
 
-			// 显示繁忙提示
-			wx.showToast({
-				title: '正在提交',
-				icon: 'loading',
-				duration: 10000
-			});
-			//请求线路难度表数据
+			// 请求支付信息
 			qcloud.request({
-				url: config.service.URL+'user/register',
+				url: config.service.URL+'pay/get/config',
 				method: 'POST',
-				data: this.data.regUserInfo,
+				data: that.data.regUserInfo,
 				success: (result) => {
-					console.log(result);
+					let msg ='';
+					let type = '';
 					if(result.data.code == '0') {
-						wx.showToast({
-							title: '注册成功',
-							icon: 'success',
-							success:()=>{
-								wx.redirectTo({
-									url: '/pages/user/home/home'
-								})
-							}
-						});
+						let data = result.data.data;
+						//判断支付结果
+						if(!!data && !!data.prepay_id) {
+							//保存一下当前的订单号，如果用户重复发起支付，使用同一个订单号，微信能帮忙处理
+							// that.data.regUserInfo.out_trade_no = data.out_trade_no;
+							// 发起支付
+							wx.requestPayment({
+								'timeStamp': data.time_stamp+'',
+								'nonceStr': data.nonce_str,
+								'package': 'prepay_id='+data.prepay_id,
+								'signType': 'MD5',
+								'paySign': data.signNew,
+								'success':function(res){
+									//注册
+									qcloud.request({
+										url: config.service.URL+'user/register',
+										method: 'POST',
+										data: that.data.regUserInfo,
+										success: (result2) => {
+											if(result2.data.code == '0') {
+												wx.redirectTo({
+													url: 'msg_success'
+												});
+											}
+										},
+										fail(error) {
+										}
+									});
+								},
+								'fail':function(res){
+									// console.log(res);
+									that.openAlert('付款失败');
+								}
+							})
+						} else {
+							that.openAlert('付款失败');
+						}
+					} else {
+						that.openAlert('付款失败');
 					}
 				},
 				fail(error) {
+					that.openAlert('付款失败');
 				}
 			});
 
-
-			
-			
-			// let nonceStr = (Math.random()+'').replace('.', '').substr(0, 20);
-			// // 发起支付
-			// wx.requestPayment({
-			// 	'timeStamp': (new Date()).getTime(),
-			// 	'nonceStr': nonceStr, // 随机串
-			// 	'package': '', //统一下单接口返回的 prepay_id 参数值，提交格式如：prepay_id=*
-			// 	'signType': 'MD5',
-			// 	'paySign': '',//签名
-			// 	'success':function(res){
-			// 	},
-			// 	'fail':function(res){
-			// 	}
-			// });
 		} else {
 			this.setData({
 				viewData: this.data.viewData
 			});
 		}
+	},
+
+	openAlert: function (msg, call) {
+		wx.showModal({
+			content: msg,
+			showCancel: false,
+			success: function (res) {
+				if (res.confirm) {
+					if(!!call) call();
+				}
+			}
+		});
 	}
 
 

@@ -24,9 +24,32 @@
           <input id="email" bindblur="bindBlur" class="default" type="text" placeholder="请输入您的邮箱" />
         </view>
 
-        <label class="title-label" for="id_card">身份证 <text class="error-msg">{{errorMsg.id_card}}</text></label>
+        <label class="title-label" for="id_card">身份证 / 护照<text class="error-msg">{{errorMsg.id_card}}</text></label>
         <view class="section input-section">
           <input id="id_card" bindblur="bindBlur" class="default" type="text" placeholder="请输入您的身份证号" />
+        </view>
+
+
+        <view class="weui-cells__title">选择比赛项目及组别</view>
+        <view class="weui-cells weui-cells_after-title">
+          <label class="weui-cell weui-check__label" >
+            <view class="weui-cell__hd weui-check__hd_in-checkbox">
+              <icon class="weui-icon-checkbox_success" type="success" size="23" ></icon>
+            </view>
+            <view class="weui-cell__bd">自然岩壁红点大赛</view>
+          </label>
+
+          <checkbox-group bindchange="checkboxChange">
+            <label class="weui-cell weui-check__label" wx:for="{{gameTypeItems}}" wx:key="value">
+              <checkbox class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+
+              <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+              </view>
+              <view class="weui-cell__bd">{{item.name}}</view>
+            </label>
+          </checkbox-group>
         </view>
 
         <button class="custom-btn {{submitButtonStatus}}" form-type="submit" type="primary" size="default" disabled="{{!submitButtonStatus}}" hover-class="button-hover"> 下一步 </button>

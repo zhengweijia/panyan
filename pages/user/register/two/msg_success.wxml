@@ -1,0 +1,51 @@
+<view class="page">
+    <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+            <icon type="success" size="93"></icon>
+        </view>
+        <view class="weui-msg__text-area">
+            <view class="weui-msg__title">注册成功</view>
+            <view class="weui-msg__desc">
+              <view class="weui-article__h1" wx:if="{{!!userInfo.id}}">参数编号：{{userInfo.id}}</view>
+              <view class="weui-article__section">
+                <view class="weui-article__h1">提醒</view>
+                <view class="weui-article__p">
+                  1、报名参赛的运动员、裁判员及工作人员可自行前往紫云格凸；
+                </view>
+                <view class="weui-article__p">
+                  2、组委会在贵阳北动车站设有专线巴士，免费提供给参赛运动员及工作人员；
+                </view>
+                <view class="weui-article__p">
+                出发时间:9月15日 第一趟:12:00 第二趟15:00 第三趟:16:00；
+                </view>
+                <view class="weui-article__p">
+                  3:运动员报到时，必须提供身份证(或学生证、军官证、护照等其 它有效证件)的原件及复印件；
+                </view>
+                <view class="weui-article__p">
+                  未能出示有效证件的运动员，将不予参赛；
+                </view>
+                <view class="weui-article__p">
+                  4:报到时间: 9月 15 日 12:00-21:00；
+                </view>
+                <view class="weui-article__p">
+                  报到地点:格凸山庄。
+                </view>
+
+              </view>
+            </view>
+        </view>
+        <view class="weui-msg__opr-area">
+            <view class="weui-btn-area">
+                <button class="weui-btn" bindtap="gotoHome" type="primary">确定</button>
+            </view>
+        </view>
+        <!--<view class="weui-msg__extra-area">-->
+            <!--<view class="weui-footer">-->
+                <!--<view class="weui-footer__links">-->
+                    <!--<navigator url="" class="weui-footer__link">底部链接文本</navigator>-->
+                <!--</view>-->
+                <!--<view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>-->
+            <!--</view>-->
+        <!--</view>-->
+    </view>
+</view>

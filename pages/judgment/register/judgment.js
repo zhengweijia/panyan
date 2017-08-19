@@ -36,6 +36,8 @@ Page({
 		}
 	},
 
+
+
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
@@ -47,15 +49,7 @@ Page({
 			if(!!data && data.isRegister) {
 				let url = '/pages/index/index';
 				// 已经注册过了，判断类型，跳转到不同主页
-				// 0 管理员，1裁判，2参赛选手，3普通用户
-				if(app.globalData.userInfo.role === '2') {
-					url = '/pages/user/home/home'; //选手主页
-				} else if(app.globalData.userInfo.role === '1') {
-					url = '/pages/judgment/home/home'; //裁判主页
-				}
-				wx.redirectTo({
-					url: url
-				});
+				app.checkUserTypeAndRedirectTo();
 			} else {
 				// 从本地拿目前有的用户信息
 				let value = app.globalData.userInfo;
@@ -70,10 +64,9 @@ Page({
 				});
 			}
 		});
-
-
-
 	},
+
+
 
 	bindBlur: function(e) {
 		let value = e.detail.value;

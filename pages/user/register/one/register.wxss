@@ -43,3 +43,15 @@ form .title-label:first-child {
   float:left;
   line-height:1.4rem;
 }
+
+.weui-cells__title {
+  display: block;
+  margin: 44rpx 0 20rpx;
+  padding: 0;
+  font-size: 30rpx;
+  color: #989898;
+}
+.weui-cells_after-title {
+  border-radius: 10rpx;
+  border: 1rpx solid #aaa;
+}

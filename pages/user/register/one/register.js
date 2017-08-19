@@ -28,7 +28,9 @@ Page({
 
 			phone: '',
 			email: '',
-			avatar_url: ''
+			avatar_url: '',
+
+			game_list:''
     },
 
 		submitButtonStatus: false,
@@ -38,7 +40,14 @@ Page({
     	phone: '',
     	email: '',
 			id_card: '',
-		}
+		},
+
+		gameTypeItems: [
+			// {name: '自然岩壁红点大赛', value: '自然岩壁红点大赛', checked: true},
+			{name: '攀石赛-专业组', value: '攀石赛-专业组', checked: false},
+			{name: '攀石赛-公开组', value: '攀石赛-公开组', checked: false},
+			{name: '攀石赛-青少年组', value: '攀石赛-青少年组', checked: false}
+		]
   },
 
   /**
@@ -62,6 +71,24 @@ Page({
 
   },
 
+	checkboxChange: function (e) {
+		let gameTypeItems = this.data.gameTypeItems, values = e.detail.value;
+		for (let i = 0, lenI = gameTypeItems.length; i < lenI; ++i) {
+			gameTypeItems[i].checked = false;
+
+			for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
+				if(gameTypeItems[i].value == values[j]){
+					gameTypeItems[i].checked = true;
+					break;
+				}
+			}
+		}
+
+		this.setData({
+			gameTypeItems: gameTypeItems
+		});
+	},
+
 	bindBlur: function(e) {
   	let value = e.detail.value;
   	let id = e.currentTarget.id;
@@ -79,9 +106,9 @@ Page({
 				msg = '格式不正确';
 			}
 		} else if(id === 'id_card') {
-			if(!config.regExp.isIDCard.test(value)) {
-				msg = '格式不正确';
-			} else {
+			// 如果是身份证，则验证还要验证年龄；否则就只做非空验证
+			if(config.regExp.isIDCard.test(value)) {
+				// msg = '格式不正确';
 				//35052519870101888X
 				//350525870101888
 				let y = 0;
@@ -95,6 +122,8 @@ Page({
 				if(2017-y < 14) {
 					msg = '必须年满 14 周岁';
 				}
+			} else if(value.length <= 0) {
+				msg = '不能为空';
 			}
 		}
 
@@ -125,6 +154,14 @@ Page({
 	formSubmit: function () {
 		// 表单是否验证通过
 		if(this.data.submitButtonStatus) {
+
+			let game_list = '自然岩壁红点大赛';
+			for(let g of this.data.gameTypeItems) {
+				if(g.checked) {
+					game_list = game_list+','+g.value;
+				}
+			}
+			this.data.regUserInfo.game_list = game_list;
 			app.globalData.regUserInfo = this.data.regUserInfo; // 将信息填入全局保存
 			wx.redirectTo({
         url: '/pages/user/register/two/register',

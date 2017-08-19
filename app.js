@@ -37,16 +37,45 @@ App({
 				if(!!result && !!result.data && result.data.code == '0') {
 					if(!!call) call(this.globalData.userInfo);
 				} else {
-					//未完善信息了，则跳转到完善信息页面
-					wx.redirectTo({
-						url: '/pages/user/register/one/register'
-						// url: '/pages/user/register/two/register'
-					});
+					if(this.checkUserTypeAndRedirectTo()) {
+						//未完善信息了，则跳转到完善信息页面
+						wx.redirectTo({
+							url: '/pages/user/register/one/register'
+							// url: '/pages/user/register/two/register'
+						});
+					}
+
 				}
 			},
 			fail(error) {
 			}
 		});
+	},
+
+	// 检查用户类型，如果当前访问的是选手页面，但是他的身份是裁判，则跳到裁判页面
+	checkUserTypeAndRedirectTo: function () {
+		if(this.globalData.userInfo && !!this.globalData.userInfo.role) {
+			let url='';
+			let currentPages = this.getCurrentPages()[this.getCurrentPages().length-1].route;
+			// 0 管理员，1裁判，2参赛选手，3普通用户
+			if(this.globalData.userInfo.role === '2' && currentPages && currentPages.indexOf('judgment') >=0 ) {
+				url = '/pages/user/home/home'; //选手主页
+			} else if(this.globalData.userInfo.role === '1' && currentPages && currentPages.indexOf('user') >=0 ) {
+				url = '/pages/judgment/home/home'; //裁判主页
+			}
+			if(url !== '') {
+				wx.redirectTo({
+					url: url
+				});
+				return false;
+			} else {
+				return true;
+			}
+
+		} else {
+			return true;
+		}
+
 	},
 	// 仅仅检查有没有注册
 	checkRegister: function (call) {
