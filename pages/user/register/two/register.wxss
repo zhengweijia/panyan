@@ -12,7 +12,7 @@
 }
 
 .custom-btn {
-  margin: 140rpx 38rpx 100rpx;
+  margin: 50rpx 38rpx 100rpx;
 }
 .border-before {
   position: relative;
@@ -26,4 +26,8 @@
 .weui-cells .border-before:before{content:" ";position:absolute;left:0;top:0;right:0;height:1px;border-top:1rpx solid #d9d9d9;color:#d9d9d9;left:15px}
 .container .border-before:first-child:before {
   display: none;
+}
+
+.weui-cells__tips {
+  font-size: 28rpx;
 }

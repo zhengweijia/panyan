@@ -18,7 +18,9 @@ Page({
 		viewData : {
   		money: 0.00,
 			lineNum: 0,
-		}
+		},
+		icon1: config.staticUrl+'/img/home/1.png',
+		icon2: config.staticUrl+'/img/home/2.png',
   },
 
 	/**

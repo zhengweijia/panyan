@@ -1,4 +1,5 @@
 /* about.wxss */
 .page {
-  padding: 30rpx;
+  /*padding: 30rpx;*/
+  text-align: center;
 }

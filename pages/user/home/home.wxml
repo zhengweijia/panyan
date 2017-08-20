@@ -29,14 +29,14 @@
       <view class="weui-media-box weui-media-box_small-appmsg">
         <view class="weui-cells weui-cells_in-small-appmsg">
           <navigator url="/pages/user/line/all/all" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-            <view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+            <view class="weui-cell__hd"><image src="{{icon1}}" style="width: 20px;height: 11px;margin-right: 5px" /></view>
             <view class="weui-cell__bd weui-cell_primary">
               <view>所有路线</view>
             </view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
           </navigator>
           <navigator url="/pages/user/line/my/my" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-            <view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+            <view class="weui-cell__hd"><image src="{{icon2}}" style="width: 13px;height: 15px;margin-right: 5px" /></view>
             <view class="weui-cell__bd weui-cell_primary">
               <view>已完成的路线</view>
             </view>
@@ -47,28 +47,28 @@
     </view>
   </view>
 
-  <view class="weui-panel">
-    <view class="weui-panel__bd">
-      <view class="weui-media-box weui-media-box_small-appmsg">
-        <view class="weui-cells weui-cells_in-small-appmsg">
-          <navigator url="/pages/user/report/report" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-            <view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-            <view class="weui-cell__bd weui-cell_primary">
-              <view>我的成绩单</view>
-            </view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-          </navigator>
-          <navigator url="/pages/user/detail/detail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-            <view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-            <view class="weui-cell__bd weui-cell_primary">
-              <view>奖金明细</view>
-            </view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-          </navigator>
-        </view>
-      </view>
-    </view>
-  </view>
+  <!--<view class="weui-panel">-->
+    <!--<view class="weui-panel__bd">-->
+      <!--<view class="weui-media-box weui-media-box_small-appmsg">-->
+        <!--<view class="weui-cells weui-cells_in-small-appmsg">-->
+          <!--<navigator url="/pages/user/report/report" class="weui-cell weui-cell_access" hover-class="weui-cell_active">-->
+            <!--<view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>-->
+            <!--<view class="weui-cell__bd weui-cell_primary">-->
+              <!--<view>我的成绩单</view>-->
+            <!--</view>-->
+            <!--<view class="weui-cell__ft weui-cell__ft_in-access"></view>-->
+          <!--</navigator>-->
+          <!--<navigator url="/pages/user/detail/detail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">-->
+            <!--<view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>-->
+            <!--<view class="weui-cell__bd weui-cell_primary">-->
+              <!--<view>奖金明细</view>-->
+            <!--</view>-->
+            <!--<view class="weui-cell__ft weui-cell__ft_in-access"></view>-->
+          <!--</navigator>-->
+        <!--</view>-->
+      <!--</view>-->
+    <!--</view>-->
+  <!--</view>-->
 
   <view class="weui-panel">
     <view class="weui-panel__bd">

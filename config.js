@@ -4,8 +4,8 @@
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
 let host = '64757925.qcloud.la';
-
 let config = {
+	staticUrl : 'https://'+host+'/static',
 
 	// useLineDifficultyStandard:'usa',//使用的难度标准
 	useLineDifficultyStandard:'fr',//使用的难度标准

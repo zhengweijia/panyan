@@ -73,8 +73,13 @@
             <icon class="weui-icon-radio" type="success_no_circle" size="16" wx:if="{{item.checked}}"></icon>
           </view>
         </label>
+
       </radio-group>
     </view>
+    <view class="weui-cells__tips"><icon type="info_circle" size="16"></icon> 报名费：贵阳-格凸往返交通费，格凸河门票，纪念T恤1件，号码布，活动手册1份，保险，1个路餐，4个正餐
+    </view>
+    <view class="weui-cells__tips"><icon type="info_circle" size="16"></icon> 报名费&住宿费：贵阳-格凸往返交通费，格凸河门票，纪念T恤1件，号码布，活动手册1份，保险，2个路餐，4个正餐，3晚格凸山庄标间180元包早餐</view>
+
 
 
     <button class="custom-btn" form-type="submit" type="primary" size="default" disabled="{{!viewData.submitButtonStatus}}" hover-class="button-hover">立即报名</button>

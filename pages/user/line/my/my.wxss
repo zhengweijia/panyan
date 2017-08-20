@@ -7,6 +7,10 @@
   color: #fff;
   font-size: 26rpx;
   line-height: 1em;
+  background-image: url("https://64757925.qcloud.la/static/img/home/top.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
 }
 .top .circle {
   width: 265rpx;
@@ -47,5 +51,10 @@
 .no-data {
   text-align: center;
   color: #b1bec7;
-  padding: 80rpx 0 0;
+  padding: 80rpx 0 500rpx;
+
+  background-image: url("https://64757925.qcloud.la/static/img/none.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 321rpx auto;
 }

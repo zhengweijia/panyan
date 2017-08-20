@@ -27,6 +27,5 @@
 
   </view>
   <view class="no-data" wx:if="{{viewData.resultList.length <= 0}}">
-    你还没有完成的路线哟...
   </view>
 </view>

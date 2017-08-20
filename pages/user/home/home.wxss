@@ -3,6 +3,10 @@
 .userinfo {
   background-color: #2b3642;
   padding: 70rpx 0;
+  background-image: url("https://64757925.qcloud.la/static/img/home/top.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
 }
 .userinfo-avatar {
   flex: 0.55;
@@ -50,4 +54,9 @@ table .money text {
 table .num {
   font-size: 30rpx;
   color: #df674b;
+}
+
+.weui-cell__hd {
+  text-align: center;
+  min-width: 60rpx;
 }

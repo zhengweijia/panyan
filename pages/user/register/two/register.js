@@ -42,13 +42,13 @@ Page({
 
 			userTypeMap:[{
 				name: '报名套餐',
-				price:'999',
+				price:'150',
 				value: '1',
 				checked: true
 			},
 				{
-					name: '报名+住宿套餐',
-					price:'1999',
+					name: '报名费&住宿费',
+					price:'350',
 					value: '2',
 					checked: false
 				}

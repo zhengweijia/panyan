@@ -8,17 +8,22 @@
   font-size: 40rpx;
 }
 .diffcult-1 {
+  background-color: #69ba6e;
   background-image:linear-gradient(180deg,#69ba6e,#d3e450);
 }
 .diffcult-2 {
   background-color: #ffe50b;
-  /*background-image:linear-gradient(180deg,#69ba6e,#d3e450);*/
+  background-image:linear-gradient(180deg,#f6ee37,#fcde35);
 }
 .diffcult-3 {
   background-color: #fda425;
+  background-image:linear-gradient(180deg,#fcd134,#fa9436);
+
 }
 .diffcult-4 {
   background-color: #fa454d;
+  background-image:linear-gradient(180deg,#f8843f,#f34254);
+
 }
 .detail .text {
   color: #838792;

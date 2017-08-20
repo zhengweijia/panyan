@@ -2,6 +2,8 @@
   "pages": [
 
     "pages/user/home/home",
+    "pages/user/register/two/register",
+
     "pages/welcome/welcome",
 
     "pages/judgment/register/judgment",
@@ -10,7 +12,6 @@
     "pages/index/index",
     "pages/chat/chat",
     "pages/user/register/one/register",
-    "pages/user/register/two/register",
     "pages/user/register/two/msg_success",
     "pages/user/report/report",
     "pages/user/detail/detail",

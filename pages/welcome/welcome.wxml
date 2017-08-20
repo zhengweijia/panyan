@@ -1,2 +1,2 @@
 <!--welcome.wxml-->
-<image mode="aspectFill"  src="https://64757925.qcloud.la/static/img/page.jpg"></image>
+<image  src="{{staticPath}}/img/page.png" bindload="imageLoad" style="margin:0 auto;display:block;width:{{imageSize[0].width}}rpx; height:{{imageSize[0].height}}rpx" data-index="0" mode="scaleToFill"></image>
