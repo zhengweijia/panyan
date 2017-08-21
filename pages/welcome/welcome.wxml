@@ -1,2 +1,14 @@
 <!--welcome.wxml-->
-<image  src="{{staticPath}}/img/page.png" bindload="imageLoad" style="margin:0 auto;display:block;width:{{imageSize[0].width}}rpx; height:{{imageSize[0].height}}rpx" data-index="0" mode="scaleToFill"></image>
+<view class="body" wx:if="{{!showLoading}}">
+  <image  src="{{staticPath}}/img/page-1.png" bindload="imageLoad" style="margin:0 auto;display:block;width:{{imageSize[0].width}}rpx; height:{{imageSize[0].height}}rpx" data-index="0" mode="scaleToFill"></image>
+  <image  src="{{staticPath}}/img/page-2.png" bindload="imageLoad" style="margin:0 auto;display:block;width:{{imageSize[1].width}}rpx; height:{{imageSize[1].height}}rpx" data-index="1" mode="scaleToFill"></image>
+
+  <button class="weui-btn" bindtap="gotoReg" type="primary">立即报名</button>
+</view>
+
+<view class="page__bd" wx:if="{{showLoading}}">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+</view>

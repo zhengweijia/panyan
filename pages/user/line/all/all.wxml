@@ -59,8 +59,10 @@
           {{item.lineDifficulty[useLineDifficultyStandard]}}
         </view>
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg text">
-          <view class="weui-media-box__title">{{item.ground.area.name}}{{item.ground.name}}{{item.name}} 难度{{item.lineDifficulty[useLineDifficultyStandard]}}  线路总奖金<text class="red">￥{{item.bonus}}</text></view>
-          <view class="weui-media-box__desc">当前完成线路人数 <text class="red"> {{item.finish_num}}</text></view>
+          <view class="weui-media-box__title">{{item.ground.area.name}}{{item.ground.name}}{{item.name}} 难度{{item.lineDifficulty[useLineDifficultyStandard]}}</view>
+          <view class="weui-media-box__title">线路总奖金<text class="red">￥{{item.bonus}}</text></view>
+          <view class="weui-media-box__title">当前完成线路人数 <text class="red"> {{item.finish_num}}</text></view>
+          <view class="weui-media-box__title">您最多可获得 <text class="red"> ￥{{item.preMoney}}</text></view>
         </view>
       </navigator>
 

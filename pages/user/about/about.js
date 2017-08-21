@@ -48,4 +48,7 @@ Page({
 			imageSize:imageSize
 		})
 	}
+	,onShareAppMessage: function (res) {
+		return app.commonShareAppMessage(res);
+	}
 });

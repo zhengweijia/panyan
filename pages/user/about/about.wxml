@@ -1,2 +1,3 @@
 <!--welcome.wxml-->
-<image  src="{{staticPath}}/img/page.png" bindload="imageLoad" style="margin:0 auto;display:block;width:{{imageSize[0].width}}rpx; height:{{imageSize[0].height}}rpx" data-index="0" mode="scaleToFill"></image>
+<image  src="{{staticPath}}/img/page-1.png" bindload="imageLoad" style="margin:0 auto;display:block;width:{{imageSize[0].width}}rpx; height:{{imageSize[0].height}}rpx" data-index="0" mode="scaleToFill"></image>
+<image  src="{{staticPath}}/img/page-2.png" bindload="imageLoad" style="margin:0 auto;display:block;width:{{imageSize[1].width}}rpx; height:{{imageSize[1].height}}rpx" data-index="1" mode="scaleToFill"></image>

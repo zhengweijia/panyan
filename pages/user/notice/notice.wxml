@@ -6,24 +6,34 @@
     <view class="weui-article">
       <view class="weui-article__section">
         <view class="weui-article__section">
-          <view class="weui-article__p">
-            1、报名参赛的运动员、裁判员及工作人员可自行前往紫云格凸；
+
+          <view class="weui-article__section">
+            <view class="weui-article__h3">1 报名截止时间为 2017 年 9 月 1日 12:00。联系人:杨获成 联系电话:18785057668
+            </view>
           </view>
-        </view>
-        <view class="weui-article__section">
-          <view class="weui-article__p">
-            2、组委会在贵阳北动车站设有专线巴士，免费提供给参赛运动员及工作人员。出发时间:9月15日 第一趟:12:00 第二趟15:00 第三趟:16:00；
+
+          <view class="weui-article__section">
+            <view class="weui-article__h3">2 报到流程：
+            </view>
+            <view class="weui-article__p">
+              1）报名参赛的运动员、裁判员及工作人员可自行前往紫云格凸。
+            </view>
+            <view class="weui-article__p">
+              2）组委会在贵阳北动车站设有专线巴士，免费提供给参赛运动员及工作人员。出发时间:9月15日 第一趟:12:00 第二趟15:00 第三趟:16:00
+            </view>
+            <view class="weui-article__p">
+              3）运动员报到时，必须提供身份证(或学生证、军官证、护照等其 它有效证件)的原件及复印件。未能出示有效证件的运动员，将不予参赛。
+            </view>
+            <view class="weui-article__p">
+              4）报到时间: 9月 15 日 12:00-21:00
+            </view>
           </view>
-        </view>
-        <view class="weui-article__section">
-          <view class="weui-article__p">
-            3、运动员报到时，必须提供身份证（或学生证、军官证、护照等其 它有效证件）的原件及复印件。未能出示有效证件的运动员，将不予参赛；
+
+
+          <view class="weui-article__section">
+            <view class="weui-article__h3">3 报到地点:格凸山庄</view>
           </view>
-        </view>
-        <view class="weui-article__section">
-          <view class="weui-article__p">
-            4、报到时间: 9月 15 日 12:00-21:00，报到地点:格凸山庄。
-          </view>
+
         </view>
       </view>
     </view>

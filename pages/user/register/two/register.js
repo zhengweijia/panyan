@@ -32,7 +32,7 @@ Page({
 			clothesSizeDefaultIndex: 4, // 默认选中下标
 			clothesSizeFirst:true,
 
-			climbingTimeList: ['1年','2年','3年','4年','5年以上','10年以上'],
+			climbingTimeList: ['0-1年','1-2年','2-3年','3-4年','4-10年以上','10年以上'],
 			climbingTimeDefaultIndex: 0, // 默认选中下标
 			climbingTimeFirst:true,
 
@@ -98,9 +98,48 @@ Page({
 		this.setData({
 			viewData: this.data.viewData,
 		});
+
+
+		app.checkRegister(function (msg) {
+			if(msg.isRegister) {
+				// 0 管理员，1裁判，2参赛选手，3普通用户
+				if(msg.userInfo.role == '1'){
+					wx.redirectTo({
+						url: '/pages/judgment/home/home'
+					});
+				} else if(msg.userInfo.role == '2') {
+					wx.redirectTo({
+						url: '/pages/user/home/home'
+					});
+				}
+			}
+		});
+
   },
 	onShow: function () {
-
+		if(!!app.globalData.comefrom && app.globalData.comefrom === 'msg_success') {
+			wx.redirectTo({
+				url: '/pages/user/home/home'
+			});
+		}
+		// app.checkRegister(function (msg) {
+		// 	if(msg.isRegister) {
+		// 		// 0 管理员，1裁判，2参赛选手，3普通用户
+		// 		if(msg.userInfo.role == '1'){
+		// 			wx.redirectTo({
+		// 				url: '/pages/judgment/home/home'
+		// 			});
+		// 		} else if(msg.userInfo.role == '2') {
+		// 			wx.redirectTo({
+		// 				url: '/pages/user/home/home'
+		// 			});
+		// 		}
+		// 	} else {
+		// 		that.setData({
+		// 			showLoading: false
+		// 		});
+		// 	}
+		// });
 	},
 
   bindPickerChange: function(e){
@@ -108,17 +147,17 @@ Page({
     let id = e.currentTarget.id;
     if(id === 'height') {
     	// 第一次加载，始终是 0 bug
-    	if(this.data.viewData.heightFirst) {
-				value = this.data.viewData.heightDefaultIndex;
-			}
+    	// if(this.data.viewData.heightFirst) {
+				// value = this.data.viewData.heightDefaultIndex;
+			// }
       this.data.regUserInfo.height = this.data.viewData.heightList[value].replace(/cm/gi,'');
 			this.data.viewData.heightFirst = false;
 			this.data.viewData.heightDefaultIndex = value;
     } else if(id === 'weight') {
 			// 第一次加载，始终是 0 bug
-			if(this.data.viewData.weightFirst) {
-				value = this.data.viewData.weightDefaultIndex;
-			}
+			// if(this.data.viewData.weightFirst) {
+			// 	value = this.data.viewData.weightDefaultIndex;
+			// }
 			this.data.regUserInfo.weight = this.data.viewData.weightList[value].replace(/kg/gi,'');
 			this.data.viewData.weightFirst = false;
 			this.data.viewData.weightDefaultIndex = value;
@@ -224,6 +263,14 @@ Page({
 						} else {
 							that.openAlert('付款失败');
 						}
+					//						if(result.data.code == '0') {
+
+					} else if(result.data.code == '-1000'){
+						that.openAlert('已经注册成功', () =>{
+							wx.redirectTo({
+								url: '/pages/user/home/home'
+							});
+						});
 					} else {
 						that.openAlert('付款失败');
 					}
@@ -252,5 +299,7 @@ Page({
 		});
 	}
 
-
+	,onShareAppMessage: function (res) {
+		return app.commonShareAppMessage(res);
+	}
 });

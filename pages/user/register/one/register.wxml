@@ -11,7 +11,7 @@
 
         <label class="title-label" for="name">选手姓名 <text class="error-msg">{{errorMsg.name}}</text></label>
         <view class="section input-section">
-          <input id="name" bindblur="bindBlur" class="default"  type="text" placeholder="请输入您的真是姓名" focus />
+          <input id="name" bindblur="bindBlur" class="default"  type="text" placeholder="请输入您的真实姓名" focus />
         </view>
 
         <label class="title-label" for="phone">手机号码 <text class="error-msg">{{errorMsg.phone}}</text></label>
@@ -26,20 +26,20 @@
 
         <label class="title-label" for="id_card">身份证 / 护照<text class="error-msg">{{errorMsg.id_card}}</text></label>
         <view class="section input-section">
-          <input id="id_card" bindblur="bindBlur" class="default" type="text" placeholder="请输入您的身份证号" />
+          <input id="id_card" bindblur="bindBlur" class="default" type="text" placeholder="请输入您的身份证号 / 护照" />
         </view>
 
 
-        <view class="weui-cells__title">选择比赛项目及组别</view>
+        <view class="weui-cells__title">选择比赛项目及组别 <text class="error-msg">{{errorMsg.game_list}}</text></view>
         <view class="weui-cells weui-cells_after-title">
-          <label class="weui-cell weui-check__label" >
-            <view class="weui-cell__hd weui-check__hd_in-checkbox">
-              <icon class="weui-icon-checkbox_success" type="success" size="23" ></icon>
-            </view>
-            <view class="weui-cell__bd">自然岩壁红点大赛</view>
-          </label>
+          <!--<label class="weui-cell weui-check__label" >-->
+            <!--<view class="weui-cell__hd weui-check__hd_in-checkbox">-->
+              <!--<icon class="weui-icon-checkbox_success" type="success" size="23" ></icon>-->
+            <!--</view>-->
+            <!--<view class="weui-cell__bd">自然岩壁红点大赛</view>-->
+          <!--</label>-->
 
-          <checkbox-group bindchange="checkboxChange">
+          <checkbox-group bindchange="checkboxChange" id="game_list">
             <label class="weui-cell weui-check__label" wx:for="{{gameTypeItems}}" wx:key="value">
               <checkbox class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
 

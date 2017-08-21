@@ -1,6 +1,6 @@
 let qcloud = require('../../../../vendor/qcloud-weapp-client-sdk/index');
 let config = require('../../../../config');
-
+const app = getApp();
 Page({
 
 	data:{
@@ -25,6 +25,14 @@ Page({
 	gotoHome: function () {
 		wx.redirectTo({
 			url: '/pages/user/home/home'
-		})
+		});
 	}
+
+	,onShareAppMessage: function (res) {
+		return app.commonShareAppMessage(res);
+	}
+	// 用户点击返回时
+	,onUnload: function () {
+		app.globalData.comefrom = 'msg_success';
+	},
 });

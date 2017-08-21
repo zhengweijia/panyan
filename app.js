@@ -11,6 +11,10 @@ App({
 	 */
 	onLaunch(options) {
 		qcloud.setLoginUrl(config.service.loginUrl);
+
+		if(!!this.globalData.comefrom && this.globalData.comefrom!='') {
+			this.globalData.comefrom='';
+		}
 	},
 	globalData: {
 		userInfo: null,
@@ -19,7 +23,6 @@ App({
 
 	// 检查用户有没有注册，如果没有，跳转到注册页面
 	// call 回调，
-	// unAutoGo 如果用户没有注册不自动跳转注册页面
 	checkRegisterAndRedirectTo: function (call) {
 		qcloud.request({
 			// 检查有没有注册
@@ -35,16 +38,16 @@ App({
 				}
 
 				if(!!result && !!result.data && result.data.code == '0') {
-					if(!!call) call(this.globalData.userInfo);
-				} else {
+					// 检查当前路由
 					if(this.checkUserTypeAndRedirectTo()) {
-						//未完善信息了，则跳转到完善信息页面
-						wx.redirectTo({
-							url: '/pages/user/register/one/register'
-							// url: '/pages/user/register/two/register'
-						});
+						if(!!call) call(this.globalData.userInfo);
 					}
-
+				} else {
+					//未完善信息了，则跳转到完善信息页面
+					wx.redirectTo({
+						url: '/pages/user/register/one/register'
+						// url: '/pages/user/register/two/register'
+					});
 				}
 			},
 			fail(error) {
@@ -54,13 +57,14 @@ App({
 
 	// 检查用户类型，如果当前访问的是选手页面，但是他的身份是裁判，则跳到裁判页面
 	checkUserTypeAndRedirectTo: function () {
-		if(this.globalData.userInfo && !!this.globalData.userInfo.role) {
+		let that = this;
+		if(that.globalData.userInfo && !!that.globalData.userInfo.role) {
 			let url='';
-			let currentPages = this.getCurrentPages()[this.getCurrentPages().length-1].route;
+			let currentPages = getCurrentPages()[getCurrentPages().length-1].route;
 			// 0 管理员，1裁判，2参赛选手，3普通用户
-			if(this.globalData.userInfo.role === '2' && currentPages && currentPages.indexOf('judgment') >=0 ) {
+			if(that.globalData.userInfo.role === '2' && currentPages && currentPages.indexOf('judgment') >=0 ) {
 				url = '/pages/user/home/home'; //选手主页
-			} else if(this.globalData.userInfo.role === '1' && currentPages && currentPages.indexOf('user') >=0 ) {
+			} else if(that.globalData.userInfo.role === '1' && currentPages && currentPages.indexOf('user') >=0 ) {
 				url = '/pages/judgment/home/home'; //裁判主页
 			}
 			if(url !== '') {
@@ -232,6 +236,30 @@ App({
 				}
 			});
 		})
+	},
+
+	commonShareAppMessage: function (res) {
+		let that = this;
+		if (res.from === 'button') {
+			// 来自页面内转发按钮
+			// console.log(res.target);
+		}
+		let nick = '岩点赛事';
+		if(!!that.globalData.userInfo && !!that.globalData.userInfo.nick) {
+			nick = '你的好友「'+that.globalData.userInfo.nick+'」';
+		}
+		let title = nick+'邀请你参加2017格凸国际攀岩节';
+		return {
+			title: title,
+			path: '/pages/welcome/welcome',
+			imageUrl:config.staticUrl+'/img/share.jpg',
+			success: function(res) {
+				// 转发成功
+			},
+			fail: function(res) {
+				// 转发失败
+			}
+		}
 	},
 
 	dateFormat : function (d, fmt) {

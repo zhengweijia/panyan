@@ -30,7 +30,7 @@ Page({
 			email: '',
 			avatar_url: '',
 
-			game_list:''
+			game_list:'自然岩壁红点大赛'
     },
 
 		submitButtonStatus: false,
@@ -40,10 +40,11 @@ Page({
     	phone: '',
     	email: '',
 			id_card: '',
+			game_list: '',
 		},
 
 		gameTypeItems: [
-			// {name: '自然岩壁红点大赛', value: '自然岩壁红点大赛', checked: true},
+			{name: '自然岩壁红点大赛', value: '自然岩壁红点大赛', checked: true},
 			{name: '攀石赛-专业组', value: '攀石赛-专业组', checked: false},
 			{name: '攀石赛-公开组', value: '攀石赛-公开组', checked: false},
 			{name: '攀石赛-青少年组', value: '攀石赛-青少年组', checked: false}
@@ -54,6 +55,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+		app.checkRegister(function (msg) {
+			if(msg.isRegister) {
+				// 0 管理员，1裁判，2参赛选手，3普通用户
+				if(msg.userInfo.role == '1'){
+					wx.redirectTo({
+						url: '/pages/judgment/home/home'
+					});
+				} else if(msg.userInfo.role == '2') {
+					wx.redirectTo({
+						url: '/pages/user/home/home'
+					});
+				}
+			}
+		});
+
+
 		wx.setNavigationBarTitle({ title: '注册' });
 
 		// 从本地拿目前有的用户信息
@@ -84,8 +102,28 @@ Page({
 			}
 		}
 
+
+		let game_list = '';
+		for(let g of this.data.gameTypeItems) {
+			if(g.checked) {
+				if(game_list === '') {game_list= g.value;}
+				else {game_list = game_list+','+g.value;}
+			}
+		}
+		this.data.regUserInfo.game_list = game_list;
+
+		if(game_list === '') {
+			this.data.errorMsg[e.currentTarget.id] = '请选择';
+		} else {
+			this.data.errorMsg[e.currentTarget.id] = '';
+		}
+
+		this.vaildForm();
+
 		this.setData({
-			gameTypeItems: gameTypeItems
+			errorMsg: this.data.errorMsg,
+			gameTypeItems: gameTypeItems,
+			submitButtonStatus: this.data.submitButtonStatus
 		});
 	},
 
@@ -130,6 +168,29 @@ Page({
 		this.data.errorMsg[e.currentTarget.id] = msg;
 		this.data.regUserInfo[id] = value;
 
+		this.vaildForm();
+		// let vaild = true;
+		// for(let i in this.data.errorMsg) {
+		// 	if(this.data.errorMsg[i] !== '' || this.data.regUserInfo[i] === '') {
+		// 		vaild = false;
+		// 		break;
+		// 	}
+		// }
+		//
+		// if(vaild) {
+		// 	this.data.submitButtonStatus = true;
+		// } else {
+		// 	this.data.submitButtonStatus = false;
+		// }
+
+		this.setData({
+			errorMsg: this.data.errorMsg,
+			submitButtonStatus: this.data.submitButtonStatus
+		});
+
+	},
+
+	vaildForm: function () {
 		let vaild = true;
 		for(let i in this.data.errorMsg) {
 			if(this.data.errorMsg[i] !== '' || this.data.regUserInfo[i] === '') {
@@ -143,11 +204,6 @@ Page({
 		} else {
 			this.data.submitButtonStatus = false;
 		}
-		this.setData({
-			errorMsg: this.data.errorMsg,
-			submitButtonStatus: this.data.submitButtonStatus
-		});
-
 	},
 
 	// 提交表单
@@ -155,15 +211,9 @@ Page({
 		// 表单是否验证通过
 		if(this.data.submitButtonStatus) {
 
-			let game_list = '自然岩壁红点大赛';
-			for(let g of this.data.gameTypeItems) {
-				if(g.checked) {
-					game_list = game_list+','+g.value;
-				}
-			}
-			this.data.regUserInfo.game_list = game_list;
+
 			app.globalData.regUserInfo = this.data.regUserInfo; // 将信息填入全局保存
-			wx.redirectTo({
+			wx.navigateTo({
         url: '/pages/user/register/two/register',
       });
 		}
@@ -173,5 +223,9 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-	},
+	}
+
+	,onShareAppMessage: function (res) {
+		return app.commonShareAppMessage(res);
+	}
 });

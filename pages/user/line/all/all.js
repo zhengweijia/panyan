@@ -80,6 +80,16 @@ Page({
 
 				that.data.viewData.minList= that.data.viewData.maxList = that.data.lineDifficultyList;
 				that.data.viewData.maxIndex = that.data.viewData.maxList.length-1;
+
+				// 如果用户没有完成当前路线，可能获得的钱数需要重新计算（人数+1）
+				for(let line of that.data.lineList) {
+					if(!line.isFinish) {
+						let num = 1;
+						if(!!line.finish_num) num= num+line.finish_num;
+						line.preMoney = parseFloat((line.bonus / num).toFixed(2));
+					}
+				}
+
 			}
 
 			that.setData({
@@ -267,6 +277,9 @@ Page({
 			viewData: this.data.viewData,
 			searchData: this.data.searchData,
 		});
-	},
+	}
 
+	,onShareAppMessage: function (res) {
+	return app.commonShareAppMessage(res);
+}
 });

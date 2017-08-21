@@ -1,7 +1,11 @@
 // about.js
 var px2rpx = 2, windowWidth=375;
 let config = require('../../config');
-
+// home.js
+const app = getApp();
+// 引入 QCloud 小程序增强 SDK
+let qcloud = require('../../vendor/qcloud-weapp-client-sdk/index');
+// 引入配置
 Page({
 
 	/**
@@ -9,19 +13,50 @@ Page({
 	 */
 	data:{
 		imageSize:{},
-		staticPath: config.staticUrl
+		staticPath: config.staticUrl,
+		showLoading: true,
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+		let that = this;
 		wx.getSystemInfo({
 			success: function(res) {
 				windowWidth = res.windowWidth;
 				px2rpx = 750 / windowWidth;
 			}
-		})
+		});
+
+		app.checkRegister(function (msg) {
+			if(msg.isRegister) {
+
+				// 0 管理员，1裁判，2参赛选手，3普通用户
+				if(msg.userInfo.role == '1'){
+					wx.redirectTo({
+						url: '/pages/judgment/home/home'
+					});
+				} else if(msg.userInfo.role == '2') {
+					wx.redirectTo({
+						url: '/pages/user/home/home'
+					});
+				}
+			} else {
+				that.setData({
+					showLoading: false
+				});
+			}
+
+		});
+
+
+	},
+
+	gotoReg: function () {
+		wx.navigateTo({
+			url: '/pages/user/register/one/register'
+		});
 	},
 
 	imageLoad:function(e){
@@ -47,5 +82,9 @@ Page({
 		this.setData({
 			imageSize:imageSize
 		})
+	},
+
+	onShareAppMessage: function (res) {
+		return app.commonShareAppMessage(res);
 	}
 });

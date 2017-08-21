@@ -1,1 +1,57 @@
-/* hone.wxss */
+/* home.wxss */
+
+.userinfo {
+  background-color: #2b3642;
+  padding: 70rpx 0;
+  background-image: url("https://64757925.qcloud.la/static/img/home/top.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.userinfo-avatar {
+  flex: 1;
+  text-align: center;
+}
+.userinfo-avatar image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: 10rpx solid #f56e4e;
+  box-shadow:0 0 20rpx #F56E4E;
+}
+.userinfo-avatar>view {
+  margin-top: 14rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 20rpx;
+}
+.weui-media-box__desc {
+
+}
+.userinfo-avatar>view.name {
+  font-size: 30rpx;
+}
+.red {
+  color: #e36059;
+}
+.weui-media-box__hd_in-appmsg image {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+}
+
+.btn-list {
+  margin-top: 20rpx;
+  overflow: hidden;
+}
+.btn-list > button{
+  float: left;
+  width: 200rpx;
+  height: 50rpx;
+  padding: 0;
+  margin: 0;
+  line-height: 50rpx;
+}
+.btn-list > button:last-child {
+  float: right;
+}

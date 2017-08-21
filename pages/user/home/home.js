@@ -27,6 +27,26 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function () {
+		// let that = this;
+		//
+		// app.getAllInfoAboutMe((data)=>{
+		// 	if(!!data.userInfo) that.data.userInfo = data.userInfo;
+		// 	if(!!data.userInfo) that.data.resultList = data.resultList;
+		// 	if(!!data.userInfo) that.data.lineAllInfo = data.lineAllInfo;
+		//
+		// 	if(!!data.userInfo) that.data.viewData.money = data.hadMoney;
+		// 	if(!!data.userInfo) that.data.viewData.lineNum = data.finishLineNum;
+		//
+		// 	that.setData({
+		// 		userInfo: that.data.userInfo,
+		// 		viewData: that.data.viewData,
+		// 	});
+		// });
+	},
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
 		let that = this;
 
 		app.getAllInfoAboutMe((data)=>{
@@ -42,12 +62,6 @@ Page({
 				viewData: that.data.viewData,
 			});
 		});
-	},
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   /**
@@ -83,12 +97,8 @@ Page({
    */
   onReachBottom: function () {
   
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   }
+	,onShareAppMessage: function (res) {
+		return app.commonShareAppMessage(res);
+	}
 });
