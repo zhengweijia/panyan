@@ -1,4 +1,6 @@
 // report.js
+const app = getApp();
+
 Page({
 
   /**

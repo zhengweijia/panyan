@@ -8,7 +8,6 @@
 
     "pages/user/home/home",
 
-
     "pages/user/register/one/register",
 
     "pages/user/register/two/register",
@@ -16,8 +15,6 @@
 
     "pages/judgment/register/judgment",
     "pages/user/line/my/my",
-    "pages/index/index",
-    "pages/chat/chat",
     "pages/user/register/two/msg_success",
     "pages/user/report/report",
     "pages/user/detail/detail",

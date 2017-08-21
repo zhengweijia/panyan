@@ -18,13 +18,6 @@ let config = {
 		// 登录地址，用于建立会话
 		loginUrl: `https://${host}/login`,
 
-		// 测试的请求地址，用于测试会话
-		requestUrl: `https://${host}/user/get`,
-
-		userInfoUrl: `https://${host}/user`,
-
-		// 测试的信道服务地址
-		tunnelUrl: `https://${host}/tunnel`,
 	},
 
 	regExp: {

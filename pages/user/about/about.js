@@ -1,6 +1,7 @@
 // about.js
 var px2rpx = 2, windowWidth=375;
 let config = require('../../../config');
+const app = getApp();
 
 Page({
 

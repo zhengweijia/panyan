@@ -1,4 +1,6 @@
 // notice.js
+const app = getApp();
+
 Page({
 
   /**

@@ -1,4 +1,6 @@
 // detail.js
+const app = getApp();
+
 Page({
 
   /**
