@@ -55,3 +55,22 @@
 .btn-list > button:last-child {
   float: right;
 }
+
+.add-btn {
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  border-top: 1rpx solid #e5e5e5;
+  left: 0;
+  right: 0;
+  padding: 15rpx 50rpx;
+}
+
+.add-btn button {
+  border-radius: 38rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  font-size: 36rpx;
+  background-image: linear-gradient(#f5854e,#f56e4e);
+  background-color: #f5794e;
+}

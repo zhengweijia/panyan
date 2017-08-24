@@ -1,0 +1,82 @@
+/* new.wxss */
+.page {
+  padding-bottom: 120rpx;
+}
+.section {
+  padding: 45rpx 55rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  background-color: #fff;
+}
+.section.ground {
+  padding: 45rpx 55rpx 35rpx;
+}
+.section .content {
+  font-size: 28rpx;
+}
+.section .content.flex {
+  display: flex;
+}
+.section .content.flex>view,
+.section .content.flex picker {
+  flex:1;
+}
+
+.section .title {
+  color: #777;
+  font-size: 32rpx;
+  margin-bottom: 16rpx;
+  text-align: center;
+}
+.section.ground .content>view{
+  display: inline-block;
+  width: 25%;
+}
+.section.ground .content .box{
+  margin: 0 auto 20rpx;
+}
+.box {
+  border: 1rpx solid #5a5f6e;
+  font-size: 27rpx;
+  color: #5a5f6e;
+  background-color: #fff;
+  text-align: center;
+  padding: 14rpx 0;
+  margin: 0 auto;
+  width: 80%;
+  /*word-wrap: break-word；*/
+}
+.box .name {
+  font-weight: 900;
+}
+.box.on {
+  border: 1rpx solid #f56e4e;
+  color: #fff;
+  background-color: #f56e4e;
+}
+
+.weui-cells_after-title {
+  margin-top: 20rpx;
+}
+
+.add-btn-div {
+  text-align: center;
+  margin-top: 100rpx;
+}
+
+
+.btn {
+  margin: 0 auto;
+  width: 204rpx;
+  height: 204rpx;
+  line-height: 204rpx;
+  text-align: center;
+  background-color: #E64341;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 50%;
+}
+
+.btn.disabled {
+  background-color: #E64341;
+  color: #fff;
+}

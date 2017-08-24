@@ -41,4 +41,8 @@
 
   </view>
 
+  <view class="add-btn">
+    <button class="weui-btn" bindtap="addGame" type="warn">新增一场攀爬</button>
+  </view>
+
 </view>

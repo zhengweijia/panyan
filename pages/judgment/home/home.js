@@ -127,6 +127,12 @@ Page({
 		return promise;
 	},
 
+	// 新增一条攀爬
+	addGame: function (e) {
+    wx.navigateTo({
+      url: '/pages/judgment/new/new',
+    });
+	},
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
