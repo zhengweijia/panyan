@@ -77,6 +77,6 @@
 }
 
 .btn.disabled {
-  background-color: #E64341;
+  background-color: #aaa;
   color: #fff;
 }
