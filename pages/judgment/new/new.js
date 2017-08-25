@@ -147,7 +147,7 @@ Page({
 		let value = e.detail.value;
 		let id = e.currentTarget.id; //user_id
 
-		if(value ==='' && !(/^\d{1,9}$/gi).test(value)) {
+		if(value ==='' || !(/^\d{1,9}$/gi).test(value)) {
 			value = '';
 		}
 		this.data.formData.user_id = value;
@@ -179,9 +179,20 @@ Page({
 									// wx.redirectTo({
 									// 	url: '/pages/judgment/status/status'
 									// });
+								} else{
+									wx.showToast({
+										title: result2.data.message,
+										icon: 'loading',
+										duration: 3000
+									});
 								}
 							},
 							fail(error) {
+								wx.showToast({
+									title: '请稍候再试',
+									icon: 'loading',
+									duration: 2000
+								});
 							}
 						});
 					}
