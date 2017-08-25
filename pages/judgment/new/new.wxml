@@ -35,18 +35,21 @@
 
 
   <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_input">
+    <view class="weui-cell weui-cell_input ">
       <view class="weui-cell__hd">
         <view class="weui-label">选手编号</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="输入选手编号"/>
+        <input class="weui-input" bindblur="bindBlur" id="user_id" placeholder="输入选手编号"/>
+      </view>
+      <view class="weui-cell__ft" wx:if="{{formData.user_id === ''}}">
+        <icon type="warn" size="23" color="#E64340"></icon>
       </view>
     </view>
   </view>
 
   <view class="add-btn-div">
-    <view class="btn {{!!buttonStatus? '':'disabled'}}">开始攀爬</view>
+    <view class="btn {{!!viewData.valid? '':'disabled'}}" bindtap="start">开始攀爬</view>
   </view>
 
 </view>

@@ -47,6 +47,7 @@
 }
 .box .name {
   font-weight: 900;
+  line-height: 1.2;
 }
 .box.on {
   border: 1rpx solid #f56e4e;
@@ -62,7 +63,6 @@
   text-align: center;
   margin-top: 100rpx;
 }
-
 
 .btn {
   margin: 0 auto;

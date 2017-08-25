@@ -14,14 +14,17 @@ Page({
 		formData: {
 
 			area_id: '', // 区域id
-			ground_id: [], // 被选中的groundid
+			ground_id: '', // 被选中的groundid
 
-			line_id: [], //线路id
+			line_id: '', //线路id
+			user_id: null, //选手 id
 		},
 
 		viewData: {
 			waitGroundList:[],//选中区域后，筛出来的ground
 			waitLineList:[],//选中区域后，筛出来的line
+			valid:false,
+
 		},
 
 		lineMap: {},
@@ -90,10 +93,7 @@ Page({
 			this.data.formData.line_id = '';//
 
 			this.data.viewData.waitLineList = [];// 每次换了区域，则重置选中的场地
-			this.setData({
-				formData: this.data.formData,
-				viewData: this.data.viewData
-			});
+			this.valdForm();
 		}
 
 	},
@@ -111,11 +111,7 @@ Page({
 					this.data.viewData.waitLineList.push(line);
 				}
 			}
-
-			this.setData({
-				formData: this.data.formData,
-				viewData: this.data.viewData
-			});
+			this.valdForm();
 		}
 
 
@@ -125,15 +121,74 @@ Page({
 		let id = e.currentTarget.dataset.value;
 		if(id !== this.data.formData.line_id) {
 			this.data.formData.line_id = id;//
-			this.setData({
-				formData: this.data.formData,
-				viewData: this.data.viewData
-			});
+			this.valdForm();
 		}
 	},
 
+	valdForm: function () {
+		let v = true;
+		for(let key in this.data.formData) {
+			if(!this.data.formData[key]) {
+				v = false;
+				break;
+			}
+		}
 
+		this.data.viewData.valid = v;
+		this.setData({
+			formData: this.data.formData,
+			viewData: this.data.viewData
+		});
 
+		return v;
+	},
+	// 选手编号
+	bindBlur: function(e) {
+		let value = e.detail.value;
+		let id = e.currentTarget.id; //user_id
+
+		if(value ==='' && !(/^\d{1,9}$/gi).test(value)) {
+			value = '';
+		}
+		this.data.formData.user_id = value;
+		this.valdForm();
+	},
+
+	start: function (e) {
+		let that = this;
+	//	验证表单
+		if(this.valdForm()) {
+			// 弹窗确认
+			let line = this.data.lineMap[this.data.formData.line_id];
+			let content = '选手编号：'+this.data.formData.user_id+'\n 攀爬路线：'+line.ground.area.name+' '+line.ground.name+' '+line.name+'\n难度：'+line.lineDifficulty[this.data.useLineDifficultyStandard];
+			wx.showModal({
+				title: '确认开始',
+				content: content,
+				confirmText: "确定",
+				cancelText: "取消",
+				success: function (res) {
+					console.log(res);
+					if (res.confirm) {
+						//发送请求开始
+						qcloud.request({
+							url: config.service.URL+'judgment/start',
+							method: 'POST',
+							data: that.data.formData,
+							success: (result2) => {
+								if(result2.data.code == '0') {
+									// wx.redirectTo({
+									// 	url: '/pages/judgment/status/status'
+									// });
+								}
+							},
+							fail(error) {
+							}
+						});
+					}
+				}
+			});
+		}
+	},
 
   /**
    * 用户点击右上角分享
