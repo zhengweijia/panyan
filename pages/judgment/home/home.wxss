@@ -81,7 +81,11 @@
   margin-right:2em;
 }
 .home .weui-media-box__title {
-  font-size: 22rpx;
+  font-size: 26rpx;
+}
+.home .weui-media-box__title.number {
+  font-size: 36rpx;
+  font-weight: 900;
 }
 
 .gray {
