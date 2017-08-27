@@ -1,1 +1,62 @@
-/* detail.wxss */
+/* my.wxss */
+@import '../line/common.wxss';
+
+.top {
+  background-color: #2b3642;
+  padding: 30rpx 0;
+  text-align: center;
+  color: #fff;
+  font-size: 26rpx;
+  line-height: 1em;
+  /*background-image: url("https://64757925.qcloud.la/static/img/line/bg-red.png");*/
+  background-image: url("https://58811893.qcloud.la/static/img/line/bg-red.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 380rpx;
+}
+.detail .weui-panel .weui-media-box__title {
+  font-size: 22rpx;
+  color: #5a5f6e;
+}
+.top view:first-child {
+  margin-top: 100rpx;
+}
+
+.top .num {
+  margin-top: 25rpx;
+}
+.top .num text {
+  font-size: 70rpx;
+  line-height: 1em;
+}
+
+.top .all-money {
+  margin-top: 90rpx;
+}
+.top .all-money text{
+  padding: 0 18rpx;
+  margin-top: 25rpx;
+  background-color: #e56a60;
+  color: #fff;
+  border-radius: 19rpx;
+  line-height: 38rpx;
+  height: 38rpx;
+  font-size: 22rpx;
+  display: inline-block;
+
+  box-shadow:0 0 10rpx #F56E4E;
+}
+
+
+
+.no-data {
+  text-align: center;
+  color: #b1bec7;
+  padding: 80rpx 0 500rpx;
+
+  background-image: url("https://64757925.qcloud.la/static/img/none.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 321rpx auto;
+}

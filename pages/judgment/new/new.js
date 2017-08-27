@@ -64,7 +64,45 @@ Page({
 				for(let id in data.areaMap) {
 					that.data.areaList.push(data.areaMap[id]);
 				}
+
+
+				// 默认去拿上一次的数据
+				try {
+					let staydata = wx.getStorageSync('lastLineInfo');
+					if (!!staydata) {
+						if(!!staydata.area_id) {
+							that.data.formData.area_id = staydata.area_id;
+							// 筛选出岩场
+							that.data.viewData.waitGroundList = [];
+							for(let g of that.data.groundList) {
+								if(staydata.area_id == g.area_id) {
+									this.data.viewData.waitGroundList.push(g);
+								}
+							}
+						}
+
+						if(!!staydata.ground_id) {
+							that.data.formData.ground_id = staydata.ground_id;
+							// 筛选出线路
+							that.data.viewData.waitLineList = [];
+							for(let line of that.data.lineList) {
+								if(staydata.ground_id == line.ground_id) {
+									that.data.viewData.waitLineList.push(line);
+								}
+							}
+						}
+
+						if(!!staydata.line_id) {
+							that.data.formData.line_id = staydata.line_id;
+						}
+					}
+				} catch (e) {
+					console.log(e);
+					// Do something when catch error
+				}
 			}
+
+
 
 			that.setData({
 				viewData: that.data.viewData,
@@ -140,6 +178,12 @@ Page({
 			viewData: this.data.viewData
 		});
 
+		if(v) {
+			wx.setStorage({
+				key:"lastLineInfo",
+				data: this.data.formData
+			});
+		}
 		return v;
 	},
 	// 选手编号
@@ -176,14 +220,19 @@ Page({
 							data: that.data.formData,
 							success: (result2) => {
 								if(result2.data.code == '0') {
-									// wx.redirectTo({
-									// 	url: '/pages/judgment/status/status'
-									// });
+									let url = '/pages/judgment/home/home';
+									if(!!result2.data.data.id) {
+										url = '/pages/judgment/status/status?id='+result2.data.data.id;
+									}
+									wx.redirectTo({
+										url: url
+									});
 								} else{
-									wx.showToast({
-										title: result2.data.message,
-										icon: 'loading',
-										duration: 3000
+									wx.showModal({
+										content: result2.data.message,
+										showCancel: false,
+										success: function (res) {
+										}
 									});
 								}
 							},
@@ -201,6 +250,9 @@ Page({
 		}
 	},
 
+	onPullDownRefresh: function () {
+		wx.stopPullDownRefresh();
+	},
   /**
    * 用户点击右上角分享
    */

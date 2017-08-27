@@ -31,13 +31,13 @@
 }
 .top>view:last-child {
   border-left: 1rpx solid #e5e5e5;
+  /*background-image: url("https://64757925.qcloud.la/static/img/line/icon-3.png");*/
+  background-image: url("https://58811893.qcloud.la/static/img/line/icon-3.png");
+  background-repeat: no-repeat;
+  background-size: auto 30rpx;
+  background-position: 125rpx center;
 }
-.top>view:last-child:after {
-  content: '♦';
-  position: relative;
-  left: 5rpx;
-  color: #979797;
-}
+
 .top view>text{
   display: inline-block;
   border: 1rpx solid #e5e5e5;

@@ -83,7 +83,9 @@ Page({
 			imageSize:imageSize
 		})
 	},
-
+	onPullDownRefresh: function () {
+		wx.stopPullDownRefresh();
+	},
 	onShareAppMessage: function (res) {
 		return app.commonShareAppMessage(res);
 	}

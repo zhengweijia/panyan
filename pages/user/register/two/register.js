@@ -305,7 +305,9 @@ Page({
 			});
 		}
 	},
-
+	onPullDownRefresh: function () {
+		wx.stopPullDownRefresh();
+	},
 	openAlert: function (msg, call) {
 		wx.showModal({
 			content: msg,

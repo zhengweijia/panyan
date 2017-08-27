@@ -14,7 +14,7 @@
           <view class="weui-label">姓名</view>
         </view>
         <view class="weui-cell__bd">
-          <input id="name" bindblur="bindBlur" class="weui-input" placeholder="请输入您的真是姓名"/>
+          <input id="name" bindblur="bindBlur" class="weui-input" placeholder="请输入您的真实姓名"/>
         </view>
         <view class="weui-cell__ft" wx:if="{{!!errorMsg.name}}">
           <icon type="warn" size="23" color="#E64340"></icon>

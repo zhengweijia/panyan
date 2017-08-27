@@ -1,26 +1,30 @@
 {
   "pages": [
+    "pages/judgment/register/judgment",
+    
+    "pages/user/detail/detail",
+
+    "pages/judgment/home/home",
+
     "pages/judgment/new/new",
+    "pages/judgment/status/status",
 
     "pages/welcome/welcome",
     "pages/user/line/all/all",
-    "pages/judgment/home/home",
     "pages/user/home/home",
     "pages/user/register/one/register",
     "pages/user/register/two/register",
-    "pages/judgment/register/judgment",
     "pages/user/line/my/my",
     "pages/user/register/two/msg_success",
     "pages/user/report/report",
-    "pages/user/detail/detail",
     "pages/user/about/about",
-    "pages/user/notice/notice",
-    "pages/judgment/status/status"
+    "pages/user/notice/notice"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#2b3642",
     "navigationBarTitleText": "2017 中国格凸国际攀岩节",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh":true
   }
 }

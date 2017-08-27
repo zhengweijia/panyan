@@ -1,2 +1,14 @@
 <!--status.wxml-->
-<text>status.wxml</text>
+<view class="status">
+
+  <view class="userinfo">
+    <view class="timer">{{timerStr}}</view>
+  </view>
+
+  <view class="">
+    <ul class="btn-list">
+      <li class="fail" bindtap="fail">攀爬失败</li>
+      <li class="success" bindtap="success">攀爬成功</li>
+    </ul>
+  </view>
+</view>

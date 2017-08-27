@@ -1,5 +1,7 @@
 /* home.wxss */
-
+.home {
+  padding-bottom: 120rpx;
+}
 .userinfo {
   background-color: #2b3642;
   padding: 70rpx 0;
@@ -73,4 +75,16 @@
   font-size: 36rpx;
   background-image: linear-gradient(#f5854e,#f56e4e);
   background-color: #f5794e;
+}
+
+.home .weui-media-box__hd_in-appmsg {
+  margin-right:2em;
+}
+.home .weui-media-box__title {
+  font-size: 22rpx;
+}
+
+.gray {
+  background-color: #aaa;
+  color: #fff;
 }
