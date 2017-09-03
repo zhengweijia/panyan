@@ -1,5 +1,5 @@
 <!--home.wxml-->
-<view class="home">
+<view class="home" wx:if="{{!showLoading}}">
 
   <view class="weui-flex userinfo">
     <view class="userinfo-avatar">
@@ -35,4 +35,11 @@
     <button class="weui-btn" bindtap="addGame" type="warn">新增一场攀爬</button>
   </view>
 
+</view>
+
+<view class="page__bd" wx:if="{{showLoading}}">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
 </view>

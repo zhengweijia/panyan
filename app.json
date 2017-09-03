@@ -1,5 +1,12 @@
 {
   "pages": [
+    "pages/welcome/welcome",
+
+    "pages/user/register/two/register",
+
+    "pages/user/register/one/register",
+
+
     "pages/judgment/register/judgment",
     
     "pages/user/detail/detail",
@@ -9,11 +16,8 @@
     "pages/judgment/new/new",
     "pages/judgment/status/status",
 
-    "pages/welcome/welcome",
     "pages/user/line/all/all",
     "pages/user/home/home",
-    "pages/user/register/one/register",
-    "pages/user/register/two/register",
     "pages/user/line/my/my",
     "pages/user/register/two/msg_success",
     "pages/user/report/report",

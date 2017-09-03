@@ -228,8 +228,18 @@ Page({
 										url: url
 									});
 								} else{
+									let msg = result2.data.message;
+									// 告诉裁判这个选手有那些线路正在比赛
+									if(result2.data.code == '-100' && result2.data.data.length > 0) {
+										let result_on_list = result2.data.data; // 正在进行中的线路
+										msg= msg+'；进行中的线路：';
+										for(let res of result_on_list) {
+											let line = that.data.lineMap[res.line_id];
+											msg = msg + line.ground.area.name+'/'+line.ground.name+'/'+line.name+'、';
+										}
+									}
 									wx.showModal({
-										content: result2.data.message,
+										content: msg,
 										showCancel: false,
 										success: function (res) {
 										}

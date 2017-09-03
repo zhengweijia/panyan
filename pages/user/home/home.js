@@ -22,7 +22,9 @@ Page({
 		icon2: config.staticUrl+'/img/home/2.png',
 		icon3: config.staticUrl+'/img/home/3.png',
 		icon4: config.staticUrl+'/img/home/4.png',
-  },
+		firstShow: true ,// 是否第一次show，主要用于onshow 时判断，不用多发请求
+
+	},
 
 	/**
 	 * 生命周期函数--监听页面加载
@@ -37,8 +39,11 @@ Page({
   },
 
   onShow: function(){
-    this.update();
-  },
+		if(!this.data.firstShow) {
+			this.update();
+		}
+		this.data.firstShow = false;
+	},
   update: function(call){
     let that = this;
 

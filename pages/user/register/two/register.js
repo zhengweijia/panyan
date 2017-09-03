@@ -217,86 +217,66 @@ Page({
   	let that = this;
 		if(this.data.viewData.submitButtonStatus){
 
-			if(!config.isDevelop) {
-				// 请求支付信息
-				qcloud.request({
-					url: config.service.URL+'pay/get/config',
-					method: 'POST',
-					data: that.data.regUserInfo,
-					success: (result) => {
-						let msg ='';
-						let type = '';
-						if(result.data.code == '0') {
-							let data = result.data.data;
-							//判断支付结果
-							if(!!data && !!data.prepay_id) {
-								//保存一下当前的订单号，如果用户重复发起支付，使用同一个订单号，微信能帮忙处理
-								// that.data.regUserInfo.out_trade_no = data.out_trade_no;
-								// 发起支付
-								wx.requestPayment({
-									'timeStamp': data.time_stamp+'',
-									'nonceStr': data.nonce_str,
-									'package': 'prepay_id='+data.prepay_id,
-									'signType': 'MD5',
-									'paySign': data.signNew,
-									'success':function(res){
-										//注册
-										qcloud.request({
-											url: config.service.URL+'user/register',
-											method: 'POST',
-											data: that.data.regUserInfo,
-											success: (result2) => {
-												if(result2.data.code == '0') {
-													wx.redirectTo({
-														url: 'msg_success'
-													});
-												}
-											},
-											fail(error) {
+			// 请求支付信息
+			qcloud.request({
+				url: config.service.URL+'pay/get/config',
+				method: 'POST',
+				data: that.data.regUserInfo,
+				success: (result) => {
+					let msg ='';
+					let type = '';
+					if(result.data.code == '0') {
+						let data = result.data.data;
+						//判断支付结果
+						if(!!data && !!data.prepay_id) {
+							//保存一下当前的订单号，如果用户重复发起支付，使用同一个订单号，微信能帮忙处理
+							// that.data.regUserInfo.out_trade_no = data.out_trade_no;
+							// 发起支付
+							wx.requestPayment({
+								'timeStamp': data.time_stamp+'',
+								'nonceStr': data.nonce_str,
+								'package': 'prepay_id='+data.prepay_id,
+								'signType': 'MD5',
+								'paySign': data.signNew,
+								'success':function(res){
+									//注册
+									qcloud.request({
+										url: config.service.URL+'user/register',
+										method: 'POST',
+										data: that.data.regUserInfo,
+										success: (result2) => {
+											if(result2.data.code == '0') {
+												wx.redirectTo({
+													url: 'msg_success'
+												});
 											}
-										});
-									},
-									'fail':function(res){
-										// console.log(res);
-										that.openAlert('付款失败');
-									}
-								})
-							} else {
-								that.openAlert('付款失败');
-							}
-							//						if(result.data.code == '0') {
-
-						} else if(result.data.code == '-1000'){
-							that.openAlert('已经注册成功', () =>{
-								wx.redirectTo({
-									url: '/pages/user/home/home'
-								});
-							});
+										},
+										fail(error) {
+										}
+									});
+								},
+								'fail':function(res){
+									// console.log(res);
+									that.openAlert('付款失败');
+								}
+							})
 						} else {
 							that.openAlert('付款失败');
 						}
-					},
-					fail(error) {
+					} else if(result.data.code == '-1000'){
+						that.openAlert(result.data.message, () =>{
+							wx.redirectTo({
+								url: '/pages/user/home/home'
+							});
+						});
+					} else {
 						that.openAlert('付款失败');
 					}
-				});
-			} else {
-				//注册
-				qcloud.request({
-					url: config.service.URL+'user/register',
-					method: 'POST',
-					data: that.data.regUserInfo,
-					success: (result2) => {
-						if(result2.data.code == '0') {
-							wx.redirectTo({
-								url: 'msg_success'
-							});
-						}
-					},
-					fail(error) {
-					}
-				});
-			}
+				},
+				fail(error) {
+					that.openAlert('付款失败');
+				}
+			});
 
 
 		} else {

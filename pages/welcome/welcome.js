@@ -15,6 +15,7 @@ Page({
 		imageSize:{},
 		staticPath: config.staticUrl,
 		showLoading: true,
+		showRegBtn: true, //显示注册按钮
 	},
 
 	/**
@@ -43,9 +44,32 @@ Page({
 					});
 				}
 			} else {
-				that.setData({
-					showLoading: false
+				// 请求配置，看现在还能不能注册
+				qcloud.request({
+					// 检查有没有注册
+					url: config.service.URL+'get/config',
+					success: (con) => {
+						if(!!con && con.data.data.can_apply != '1') {
+							// 不能注册了
+							that.setData({
+								showLoading: false,
+								showRegBtn: false
+							});
+						} else {
+							that.setData({
+								showLoading: false
+							});
+						}
+					},
+					fail(error) {
+						that.setData({
+							showLoading: false
+						});
+					}
 				});
+
+
+
 			}
 
 		});

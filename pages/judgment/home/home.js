@@ -21,9 +21,12 @@ Page({
 		viewData : {
 			resultOnList: [],//所有正在进行中的比赛
 			optResult:{}, //当前正在操作的比赛
+
 		},
-		useLineDifficultyStandard: config.useLineDifficultyStandard
-  },
+		useLineDifficultyStandard: config.useLineDifficultyStandard,
+		showLoading: true,
+		firstShow: true // 是否第一次show，主要用于onshow 时判断，不用多发请求
+	},
 
 	/**
 	 * 生命周期函数--监听页面加载
@@ -46,18 +49,21 @@ Page({
 				that.setData({
 					viewData: that.data.viewData,
 					lineAllInfo: that.data.lineAllInfo,
-					userInfo: that.data.userInfo
+					userInfo: that.data.userInfo,
+					showLoading: false,
 				});
 			});
 		});
-
 	},
 	onReady: function () {
 
 	},
 
 	onShow: function () {
-		this.updateOn();
+		if(!this.data.firstShow) {
+			this.updateOn();
+		}
+		this.data.firstShow = false;
 	},
 
 	updateOn:function (back) {
