@@ -48,8 +48,6 @@
   box-shadow:0 0 10rpx #F56E4E;
 }
 
-
-
 .no-data {
   text-align: center;
   color: #b1bec7;
@@ -59,4 +57,34 @@
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 321rpx auto;
+}
+
+.add-btn {
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  border-top: 1rpx solid #e5e5e5;
+  left: 0;
+  right: 0;
+  padding: 15rpx 50rpx;
+  z-index: 100;
+}
+
+.add-btn button {
+  border-radius: 38rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  font-size: 36rpx;
+  background-image: linear-gradient(#f5854e,#f56e4e);
+  background-color: #f5794e;
+}
+
+.add-btn button[disabled][type="warn"] {
+  background-color: #aaa;
+  background-image: none;
+  color: #fff;
+}
+
+.detail {
+  padding-bottom: 90rpx;
 }

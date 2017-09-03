@@ -1,7 +1,8 @@
 // detail.js
 const app = getApp();
 let config = require('../../../config');
-
+// 引入 QCloud 小程序增强 SDK
+let qcloud = require('../../../vendor/qcloud-weapp-client-sdk/index');
 Page({
 
   /**
@@ -10,11 +11,11 @@ Page({
   data: {
 		viewData:{
 			money: 0,
-			ranking: 0,
 			resultList: []
 		},
+		ranking: '',
 		useLineDifficultyStandard: config.useLineDifficultyStandard, //难度使用什么标准
-
+		canGetMonet: false, //能不能提前奖金
 	},
 
   /**
@@ -55,13 +56,43 @@ Page({
 			that.setData({
 				userInfo: that.data.userInfo,
 				viewData: that.data.viewData,
+			});
 
+			// 请求配置，看现在能不能提取现金
+			qcloud.request({
+				// 检查有没有注册
+				url: config.service.URL+'get/config',
+				success: (con) => {
+					if(!!con && con.data.data.can_draw == '1') {
+						// 不能注册了
+						that.setData({
+							canGetMonet: true,
+						});
+					}
+				}
+			});
+
+			// 请求名次
+			qcloud.request({
+				url: config.service.URL+'user/get/ranking/'+data.userInfo.id,
+				success: (msg) => {
+					if(!!msg && !!msg.data.data.ranking) {
+						that.setData({
+							ranking: msg.data.data.ranking
+						});
+					}
+				}
 			});
 
 			if(!!call) {
 				call();
 			}
 		});
+	},
+
+	// 提现
+	getMoney: function () {
+
 	},
   /**
    * 生命周期函数--监听页面初次渲染完成

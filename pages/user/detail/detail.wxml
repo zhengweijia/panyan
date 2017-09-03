@@ -4,7 +4,7 @@
     <view>本次攀岩节获得总奖金</view>
     <view class="num"><text >{{viewData.money}}</text>元</view>
 
-    <view class="all-money"><text>您当前奖金排名{{viewData.ranking}}</text></view>
+    <view class="all-money"><text>您当前奖金排名 {{ranking}}</text></view>
   </view>
 
   <view class="weui-panel weui-panel_access" wx:if="{{viewData.resultList.length > 0}}">
@@ -25,6 +25,10 @@
       </navigator>
     </view>
 
+    <view class="add-btn">
+      <button class="weui-btn" type="warn" wx:if="{{!canGetMonet}}" disabled>大赛结束后可领取奖金</button>
+      <button class="weui-btn" bindtap="getMoney" type="primary"  wx:if="{{canGetMonet}}">领取奖金</button>
+    </view>
   </view>
   <view class="no-data" wx:if="{{!viewData || viewData.resultList.length <= 0}}">
   </view>

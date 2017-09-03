@@ -1,2 +1,26 @@
-<!--report.wxml-->
-<text>我的成绩单</text>
+<view class="report">
+  <swiper indicator-dots="{{indicatorDots}}"
+          autoplay="{{autoplay}}" duration="{{duration}}">
+
+    <block wx:for="{{blockList}}" wx:key="title1">
+      <swiper-item>
+        <view class="img-block">
+          <image src="{{item.img}}" class="slide-image"/>
+
+        </view>
+        <view class="title-block">
+          <view class="title1">{{item.title1}}</view>
+          <view class="title2">{{item.title2}}</view>
+          <view class="title3" wx:if="{{!!item.title3}}">{{item.title3}}</view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <button class="create-btn">生成海报</button>
+</view>
+
+
+
+
+
