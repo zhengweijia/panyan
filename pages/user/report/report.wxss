@@ -48,3 +48,13 @@ image {
   height: 630rpx;
   margin: 0 auto;
 }
+.no-data {
+  text-align: center;
+  color: #b1bec7;
+  padding: 80rpx 0 500rpx;
+
+  background-image: url("https://64757925.qcloud.la/static/img/none.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 321rpx auto;
+}
