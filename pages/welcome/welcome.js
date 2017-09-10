@@ -32,17 +32,23 @@ Page({
 
 		app.checkRegister(function (msg) {
 			if(msg.isRegister) {
-
-				// 0 管理员，1裁判，2参赛选手，3普通用户
-				if(msg.userInfo.role == '1'){
+				if(!!msg.noPhone) {
 					wx.redirectTo({
-						url: '/pages/judgment/home/home'
+						url: '/pages/getphone/getphone'
 					});
-				} else if(msg.userInfo.role == '2') {
-					wx.redirectTo({
-						url: '/pages/user/home/home'
-					});
+				} else {
+					// 0 管理员，1裁判，2参赛选手，3普通用户
+					if(msg.userInfo.role == '1'){
+						wx.redirectTo({
+							url: '/pages/judgment/home/home'
+						});
+					} else if(msg.userInfo.role == '2') {
+						wx.redirectTo({
+							url: '/pages/user/home/home'
+						});
+					}
 				}
+
 			} else {
 				// 请求配置，看现在还能不能注册
 				qcloud.request({
