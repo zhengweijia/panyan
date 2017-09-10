@@ -47,6 +47,8 @@ Page({
 			regUserInfo: this.data.regUserInfo
 		});
 
+		wx.setNavigationBarTitle({ title: '信息确认' });
+
 	},
 
 	checkboxChange: function (e) {

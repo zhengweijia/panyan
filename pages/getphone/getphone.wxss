@@ -55,3 +55,9 @@ form .title-label:first-child {
   border-radius: 10rpx;
   border: 1rpx solid #aaa;
 }
+
+.notice {
+  text-align: center;
+  color: #333;
+  margin-top: 30rpx;
+}

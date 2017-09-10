@@ -4,7 +4,9 @@
     <block>
       <image class="userinfo-avatar" src="{{regUserInfo.avatar_url}}" background-size="cover"></image>
     </block>
+
   </view>
+  <view class="notice">格凸攀岩节信息确认</view>
 
   <view class="reg-form">
     <form bindsubmit="formSubmit">
