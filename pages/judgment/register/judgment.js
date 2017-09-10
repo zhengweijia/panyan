@@ -33,7 +33,9 @@ Page({
 			phone: '',
 			code: '',
 			id_card: '',
-		}
+		},
+
+		showLoading: true,
 	},
 
 
@@ -51,6 +53,7 @@ Page({
 				// 已经注册过了，判断类型，跳转到不同主页
 				app.checkUserTypeAndRedirectTo();
 			} else {
+
 				// 从本地拿目前有的用户信息
 				let value = app.globalData.userInfo;
 				if (value) {
@@ -60,7 +63,8 @@ Page({
 					this.data.regUserInfo.nick = value.nick;
 				}
 				this.setData({
-					regUserInfo: this.data.regUserInfo
+					regUserInfo: this.data.regUserInfo,
+					showLoading: false
 				});
 			}
 		});
@@ -160,6 +164,9 @@ Page({
 		}
 	},
 
+	onPullDownRefresh: function () {
+		wx.stopPullDownRefresh();
+	},
 	/**
 	 * 生命周期函数--监听页面显示
 	 */

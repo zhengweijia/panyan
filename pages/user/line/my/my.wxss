@@ -1,5 +1,13 @@
 /* my.wxss */
 @import '../common.wxss';
+
+.my .first{
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+  line-height: 1.3em;
+}
+
 .top {
   background-color: #2b3642;
   padding: 30rpx 0;
@@ -58,3 +66,5 @@
   background-repeat: no-repeat;
   background-size: 321rpx auto;
 }
+
+

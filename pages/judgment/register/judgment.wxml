@@ -1,5 +1,5 @@
 <!--register.wxml-->
-<view class="container">
+<view class="container"  wx:if="{{!showLoading}}">
   <view class="userinfo">
     <block>
       <image class="userinfo-avatar" src="{{regUserInfo.avatar_url}}" background-size="cover"></image>
@@ -14,7 +14,7 @@
           <view class="weui-label">姓名</view>
         </view>
         <view class="weui-cell__bd">
-          <input id="name" bindblur="bindBlur" class="weui-input" placeholder="请输入您的真是姓名"/>
+          <input id="name" bindblur="bindBlur" class="weui-input" placeholder="请输入您的真实姓名"/>
         </view>
         <view class="weui-cell__ft" wx:if="{{!!errorMsg.name}}">
           <icon type="warn" size="23" color="#E64340"></icon>
@@ -55,5 +55,13 @@
     </view>
     <button bindtap="formSubmit" class="custom-btn {{submitButtonStatus}}" form-type="submit" type="primary" size="default" disabled="{{!submitButtonStatus}}" hover-class="button-hover"> 完成注册 </button>
 
+  </view>
+</view>
+
+
+<view class="page__bd" wx:if="{{showLoading}}">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
   </view>
 </view>

@@ -15,6 +15,7 @@ Page({
 		imageSize:{},
 		staticPath: config.staticUrl,
 		showLoading: true,
+		showRegBtn: true, //显示注册按钮
 	},
 
 	/**
@@ -31,21 +32,50 @@ Page({
 
 		app.checkRegister(function (msg) {
 			if(msg.isRegister) {
-
-				// 0 管理员，1裁判，2参赛选手，3普通用户
-				if(msg.userInfo.role == '1'){
+				if(!!msg.noPhone) {
 					wx.redirectTo({
-						url: '/pages/judgment/home/home'
+						url: '/pages/getphone/getphone'
 					});
-				} else if(msg.userInfo.role == '2') {
-					wx.redirectTo({
-						url: '/pages/user/home/home'
-					});
+				} else {
+					// 0 管理员，1裁判，2参赛选手，3普通用户
+					if(msg.userInfo.role == '1'){
+						wx.redirectTo({
+							url: '/pages/judgment/home/home'
+						});
+					} else if(msg.userInfo.role == '2') {
+						wx.redirectTo({
+							url: '/pages/user/home/home'
+						});
+					}
 				}
+
 			} else {
-				that.setData({
-					showLoading: false
+				// 请求配置，看现在还能不能注册
+				qcloud.request({
+					// 检查有没有注册
+					url: config.service.URL+'get/config',
+					success: (con) => {
+						if(!!con && con.data.data.can_apply != '1') {
+							// 不能注册了
+							that.setData({
+								showLoading: false,
+								showRegBtn: false
+							});
+						} else {
+							that.setData({
+								showLoading: false
+							});
+						}
+					},
+					fail(error) {
+						that.setData({
+							showLoading: false
+						});
+					}
 				});
+
+
+
 			}
 
 		});
@@ -83,7 +113,9 @@ Page({
 			imageSize:imageSize
 		})
 	},
-
+	onPullDownRefresh: function () {
+		wx.stopPullDownRefresh();
+	},
 	onShareAppMessage: function (res) {
 		return app.commonShareAppMessage(res);
 	}

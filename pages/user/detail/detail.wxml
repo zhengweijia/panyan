@@ -1,2 +1,35 @@
-<!--detail.wxml-->
-<text>奖金详情</text>
+<!--my.wxml-->
+<view class="detail">
+  <view class="top">
+    <view>本次攀岩节获得总奖金</view>
+    <view class="num"><text >{{viewData.money}}</text>元</view>
+
+    <view class="all-money"><text>您当前奖金排名 {{ranking}}</text></view>
+  </view>
+
+  <view class="weui-panel weui-panel_access" wx:if="{{viewData.resultList.length > 0}}">
+    <view class="weui-panel__bd" >
+      <navigator url="" wx:for="{{viewData.resultList}}" wx:key="id" class="weui-media-box weui-media-box_appmsg detail" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg diffcult-{{item.line.lineDifficulty.zoomIndex}}">
+          {{item.line.lineDifficulty[useLineDifficultyStandard]}}
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg text">
+          <view class="weui-media-box__title">{{item.line.ground.area.name}} / {{item.line.ground.name}} / {{item.line.name}} 难度{{item.line.lineDifficulty[useLineDifficultyStandard]}}</view>
+          <view class="weui-media-box__title">线路总奖金<text class="red">￥{{item.line.bonus}}</text></view>
+
+          <view class="weui-media-box__desc">当前完成线路人数 <text class="red"> {{item.line.finish_num}}</text></view>
+          <view class="weui-media-box__desc">您当前获得的奖金 <text class="red">￥{{ item.line.preMoney}}</text></view>
+
+          <view class="weui-media-box__desc">完成时间：{{item.formatFinishDate}} 线路用时：{{item.gameTime}}</view>
+        </view>
+      </navigator>
+    </view>
+
+    <view class="add-btn">
+      <button class="weui-btn" type="warn" wx:if="{{!canGetMonet}}" disabled>大赛结束后可领取奖金</button>
+      <button class="weui-btn" bindtap="getMoney" type="primary"  wx:if="{{canGetMonet}}">领取奖金</button>
+    </view>
+  </view>
+  <view class="no-data" wx:if="{{!viewData || viewData.resultList.length <= 0}}">
+  </view>
+</view>

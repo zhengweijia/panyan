@@ -32,9 +32,8 @@ App({
 			success: (result) => {
 				if(!!result.data.data && !!result.data.data.userInfo) {
 					this.globalData.userInfo = result.data.data.userInfo;
-					this.globalData.userInfo.avatar_url = this.globalData.userInfo.avatarUrl;
-					this.globalData.userInfo.nick = this.globalData.userInfo.nickName;
-					this.globalData.userInfo.openid = this.globalData.userInfo.openId;
+					this.globalData.userInfo.nickName  = this.globalData.userInfo.nick;
+					this.globalData.userInfo.openId = this.globalData.userInfo.openid;
 				}
 
 				if(!!result && !!result.data && result.data.code == '0') {
@@ -42,6 +41,10 @@ App({
 					if(this.checkUserTypeAndRedirectTo()) {
 						if(!!call) call(this.globalData.userInfo);
 					}
+				}  else if(result.data.code == '-200'){
+					wx.redirectTo({
+						url: '/pages/getphone/getphone'
+					});
 				} else {
 					//未完善信息了，则跳转到完善信息页面
 					wx.redirectTo({
@@ -64,7 +67,7 @@ App({
 			// 0 管理员，1裁判，2参赛选手，3普通用户
 			if(that.globalData.userInfo.role === '2' && currentPages && currentPages.indexOf('judgment') >=0 ) {
 				url = '/pages/user/home/home'; //选手主页
-			} else if(that.globalData.userInfo.role === '1' && currentPages && currentPages.indexOf('user') >=0 ) {
+      } else if (that.globalData.userInfo.role === '1' && currentPages && (currentPages.indexOf('user') >= 0 || currentPages.indexOf('judgment/register') >= 0) ) {
 				url = '/pages/judgment/home/home'; //裁判主页
 			}
 			if(url !== '') {
@@ -95,7 +98,6 @@ App({
 				};
 				if(!!result.data.data && !!result.data.data.userInfo) {
 					this.globalData.userInfo = result.data.data.userInfo;
-					this.globalData.userInfo.avatar_url = this.globalData.userInfo.avatarUrl;
 					this.globalData.userInfo.nick = this.globalData.userInfo.nickName;
 					this.globalData.userInfo.openid = this.globalData.userInfo.openId;
 					ret.userInfo = this.globalData.userInfo;
@@ -104,6 +106,9 @@ App({
 				if(!!result && !!result.data && result.data.code == '0') {
 					// 已经注册了
 					ret.isRegister = true;
+				} else if(result.data.code == '-200'){
+					ret.isRegister = true;
+					ret.noPhone = true;// 没有手机号
 				} else {
 					//未完善信息了，则跳转到完善信息页面
 					ret.isRegister = false;
@@ -262,8 +267,8 @@ App({
 		}
 	},
 
+
 	dateFormat : function (d, fmt) {
-		console.log(d);
 		let date = new Date(d);
 		let o = {
 			"M+": date.getMonth() + 1, //月份
