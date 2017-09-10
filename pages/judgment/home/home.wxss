@@ -1,5 +1,7 @@
 /* home.wxss */
-
+.home {
+  padding-bottom: 120rpx;
+}
 .userinfo {
   background-color: #2b3642;
   padding: 70rpx 0;
@@ -54,4 +56,39 @@
 }
 .btn-list > button:last-child {
   float: right;
+}
+
+.add-btn {
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  border-top: 1rpx solid #e5e5e5;
+  left: 0;
+  right: 0;
+  padding: 15rpx 50rpx;
+}
+
+.add-btn button {
+  border-radius: 38rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  font-size: 36rpx;
+  background-image: linear-gradient(#f5854e,#f56e4e);
+  background-color: #f5794e;
+}
+
+.home .weui-media-box__hd_in-appmsg {
+  margin-right:2em;
+}
+.home .weui-media-box__title {
+  font-size: 26rpx;
+}
+.home .weui-media-box__title.number {
+  font-size: 36rpx;
+  font-weight: 900;
+}
+
+.gray {
+  background-color: #aaa;
+  color: #fff;
 }

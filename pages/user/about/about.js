@@ -25,6 +25,10 @@ Page({
 		})
   },
 
+	onPullDownRefresh: function () {
+		wx.stopPullDownRefresh();
+	},
+
 	imageLoad:function(e){
 		//单位rpx
 		var originWidth = e.detail.width*px2rpx,
@@ -49,6 +53,8 @@ Page({
 			imageSize:imageSize
 		})
 	}
+
+
 	,onShareAppMessage: function (res) {
 		return app.commonShareAppMessage(res);
 	}

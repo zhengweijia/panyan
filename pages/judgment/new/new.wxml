@@ -1,0 +1,55 @@
+<view class="page">
+
+  <view class="section">
+    <view class="title">选择区域</view>
+    <view class="content flex">
+      <view wx:for="{{areaList}}" wx:key="id" bindtap="selectArea" data-value="{{item.id}}">
+        <view class="box {{item.id == formData.area_id ? 'on':''}}" >{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!--<view class="section ground" wx:if="{{viewData.waitGroundList.length > 0}}">-->
+  <view class="section ground" >
+    <view class="title">选择岩场</view>
+    <view class="content">
+      <view wx:for="{{viewData.waitGroundList}}" wx:key="id" bindtap="selectGround" data-value="{{item.id}}">
+        <view class="box {{item.id == formData.ground_id ? 'on':''}}">{{item.name}}</view>
+      </view>
+
+    </view>
+  </view>
+
+  <!--<view class="section ground" wx:if="{{viewData.waitLineList.length > 0}}">-->
+  <view class="section ground" >
+    <view class="title">选择线路</view>
+    <view class="content">
+      <view wx:for="{{viewData.waitLineList}}" wx:key="id" bindtap="selectLine" data-value="{{item.id}}">
+        <view class="box {{item.id == formData.line_id ? 'on':''}}">
+          <view class="name">{{item.name}}</view>
+          <view class="diffcult">难度 {{item.lineDifficulty[useLineDifficultyStandard]}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">选手编号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" bindblur="bindBlur" id="user_id" placeholder="输入选手编号"/>
+      </view>
+      <view class="weui-cell__ft" wx:if="{{formData.user_id === ''}}">
+        <icon type="warn" size="23" color="#E64340"></icon>
+      </view>
+    </view>
+  </view>
+
+  <view class="add-btn-div">
+    <view class="btn {{!!viewData.valid? '':'disabled'}}" bindtap="start">开始攀爬</view>
+  </view>
+
+</view>

@@ -22,6 +22,10 @@ Page({
 			}
 		});
 	},
+
+	onPullDownRefresh: function () {
+		wx.stopPullDownRefresh();
+	},
 	gotoHome: function () {
 		wx.redirectTo({
 			url: '/pages/user/home/home'

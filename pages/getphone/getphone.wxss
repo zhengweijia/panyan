@@ -1,0 +1,63 @@
+/* register.wxss */
+
+
+.container {
+  padding: 0 38rpx;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 60rpx 0 0;
+  border-radius: 50%;
+}
+
+.reg-form {
+  width: 100%;
+  margin: 25rpx;
+}
+.reg-form button {
+  margin: 100rpx 0 30rpx;
+}
+
+#phone {
+  width: auto;
+  display: inline-block;
+}
+
+form .title-label:first-child {
+  margin-top: 0;
+}
+.title-label {
+  margin-top: 45rpx;
+}
+.phone-section {
+  padding-bottom: 22rpx;
+}
+.phone-section text {
+  float:left;
+  line-height:1.4rem;
+}
+
+.weui-cells__title {
+  display: block;
+  margin: 44rpx 0 20rpx;
+  padding: 0;
+  font-size: 30rpx;
+  color: #989898;
+}
+.weui-cells_after-title {
+  border-radius: 10rpx;
+  border: 1rpx solid #aaa;
+}
+
+.notice {
+  text-align: center;
+  color: #333;
+  margin-top: 30rpx;
+}

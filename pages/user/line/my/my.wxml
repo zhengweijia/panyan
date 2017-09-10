@@ -17,7 +17,7 @@
           {{item.line.lineDifficulty[useLineDifficultyStandard]}}
         </view>
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg text">
-          <view class="weui-media-box__title">{{item.line.ground.area.name}}{{item.line.ground.name}}{{item.line.name}} 难度{{item.line.lineDifficulty[useLineDifficultyStandard]}}  线路总奖金<text class="red">￥{{item.line.bonus}}</text></view>
+          <view class="weui-media-box__title first">{{item.line.ground.area.name}} / {{item.line.ground.name}} / {{item.line.name}} 难度{{item.line.lineDifficulty[useLineDifficultyStandard]}}  线路总奖金<text class="red">￥{{item.line.bonus}}</text></view>
           <view class="weui-media-box__desc">当前完成线路人数 <text class="red"> {{item.line.finish_num}}</text></view>
           <view class="weui-media-box__desc">您当前获得的奖金 <text class="red">￥{{ item.line.preMoney}}</text></view>
 

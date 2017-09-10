@@ -5,7 +5,6 @@ let qcloud = require('../../../vendor/qcloud-weapp-client-sdk/index');
 // 引入配置
 let config = require('../../../config');
 
-
 Page({
 
   /**
@@ -21,77 +20,55 @@ Page({
 		},
 		icon1: config.staticUrl+'/img/home/1.png',
 		icon2: config.staticUrl+'/img/home/2.png',
-  },
+		icon3: config.staticUrl+'/img/home/3.png',
+		icon4: config.staticUrl+'/img/home/4.png',
+		firstShow: true ,// 是否第一次show，主要用于onshow 时判断，不用多发请求
+
+	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function () {
-		// let that = this;
-		//
-		// app.getAllInfoAboutMe((data)=>{
-		// 	if(!!data.userInfo) that.data.userInfo = data.userInfo;
-		// 	if(!!data.userInfo) that.data.resultList = data.resultList;
-		// 	if(!!data.userInfo) that.data.lineAllInfo = data.lineAllInfo;
-		//
-		// 	if(!!data.userInfo) that.data.viewData.money = data.hadMoney;
-		// 	if(!!data.userInfo) that.data.viewData.lineNum = data.finishLineNum;
-		//
-		// 	that.setData({
-		// 		userInfo: that.data.userInfo,
-		// 		viewData: that.data.viewData,
-		// 	});
-		// });
+    this.update();
 	},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-		let that = this;
-
-		app.getAllInfoAboutMe((data)=>{
-			if(!!data.userInfo) that.data.userInfo = data.userInfo;
-			if(!!data.userInfo) that.data.resultList = data.resultList;
-			if(!!data.userInfo) that.data.lineAllInfo = data.lineAllInfo;
-
-			if(!!data.userInfo) that.data.viewData.money = data.hadMoney;
-			if(!!data.userInfo) that.data.viewData.lineNum = data.finishLineNum;
-
-			that.setData({
-				userInfo: that.data.userInfo,
-				viewData: that.data.viewData,
-			});
-		});
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  onShow: function(){
+		if(!this.data.firstShow) {
+			this.update();
+		}
+		this.data.firstShow = false;
+	},
+  update: function(call){
+    let that = this;
 
+    app.getAllInfoAboutMe((data) => {
+      if (!!data.userInfo) that.data.userInfo = data.userInfo;
+      if (!!data.userInfo) that.data.resultList = data.resultList;
+      if (!!data.userInfo) that.data.lineAllInfo = data.lineAllInfo;
+
+      if (!!data.userInfo) that.data.viewData.money = data.hadMoney;
+      if (!!data.userInfo) that.data.viewData.lineNum = data.finishLineNum;
+
+      that.setData({
+        userInfo: that.data.userInfo,
+        viewData: that.data.viewData,
+      });
+
+      if(!!call) call();
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
+	onPullDownRefresh: function () {
+    this.update(()=>{
+      wx.stopPullDownRefresh();
+    });
+	},
   /**
    * 页面上拉触底事件的处理函数
    */

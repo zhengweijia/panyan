@@ -1,0 +1,48 @@
+/* status.wxss */
+.userinfo {
+  background-color: #2b3642;
+  background-image: url("https://64757925.qcloud.la/static/img/home/top.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.timer {
+  font-size: 120rpx;
+  text-align: center;
+  height: 590rpx;
+  line-height: 590rpx;
+  color: #fff;
+}
+
+
+.btn-list{
+  overflow: hidden;
+  display: block;
+  padding: 100rpx 70rpx;
+}
+
+.btn-list li {
+  float: left;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  font-size: 40rpx;
+  line-height: 200rpx;
+  text-align: center;
+  color: #fff;
+}
+.btn-list li:last-child {
+  float: right;
+}
+
+.success {
+  background-color: #1AAD19;
+  box-shadow:0 0 20rpx #1AAD19;
+
+}
+.fail {
+  background-color: #aaa;
+  box-shadow:0 0 20rpx #aaa;
+
+}

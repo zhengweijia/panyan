@@ -263,10 +263,8 @@ Page({
 						} else {
 							that.openAlert('付款失败');
 						}
-					//						if(result.data.code == '0') {
-
 					} else if(result.data.code == '-1000'){
-						that.openAlert('已经注册成功', () =>{
+						that.openAlert(result.data.message, () =>{
 							wx.redirectTo({
 								url: '/pages/user/home/home'
 							});
@@ -280,13 +278,16 @@ Page({
 				}
 			});
 
+
 		} else {
 			this.setData({
 				viewData: this.data.viewData
 			});
 		}
 	},
-
+	onPullDownRefresh: function () {
+		wx.stopPullDownRefresh();
+	},
 	openAlert: function (msg, call) {
 		wx.showModal({
 			content: msg,

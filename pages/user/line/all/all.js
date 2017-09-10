@@ -277,6 +277,10 @@ Page({
 			viewData: this.data.viewData,
 			searchData: this.data.searchData,
 		});
+	},
+
+	onPullDownRefresh: function () {
+		wx.stopPullDownRefresh();
 	}
 
 	,onShareAppMessage: function (res) {

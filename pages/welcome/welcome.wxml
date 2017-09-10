@@ -1,11 +1,11 @@
 <!--welcome.wxml-->
-<view class="body" wx:if="{{!showLoading}}">
+<view class="body {{showRegBtn?'show-btn':''}}" wx:if="{{!showLoading}}">
   <image  src="{{staticPath}}/img/page-01.jpg" bindload="imageLoad" style="margin:0 auto;display:block;width:{{imageSize[0].width}}rpx; height:{{imageSize[0].height}}rpx" data-index="0" mode="scaleToFill"></image>
   <image  src="{{staticPath}}/img/page-02.jpg" bindload="imageLoad" style="margin:0 auto;display:block;width:{{imageSize[1].width}}rpx; height:{{imageSize[1].height}}rpx" data-index="1" mode="scaleToFill"></image>
   <image  src="{{staticPath}}/img/page-03.jpg" bindload="imageLoad" style="margin:0 auto;display:block;width:{{imageSize[2].width}}rpx; height:{{imageSize[2].height}}rpx" data-index="2" mode="scaleToFill"></image>
   <image  src="{{staticPath}}/img/page-04.jpg" bindload="imageLoad" style="margin:0 auto;display:block;width:{{imageSize[3].width}}rpx; height:{{imageSize[3].height}}rpx" data-index="3" mode="scaleToFill"></image>
 
-  <button class="weui-btn" bindtap="gotoReg" type="primary">立即报名</button>
+  <button class="weui-btn" bindtap="gotoReg" type="primary" >立即报名</button>
 </view>
 
 <view class="page__bd" wx:if="{{showLoading}}">
@@ -14,3 +14,4 @@
     <view class="weui-loadmore__tips">正在加载</view>
   </view>
 </view>
+

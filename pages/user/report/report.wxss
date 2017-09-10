@@ -1,1 +1,50 @@
 /* report.wxss */
+.report swiper {
+  height: 900rpx;
+  background-color: #fff;
+}
+.title-block {
+  padding: 25rpx 0;
+  text-align: center;
+}
+
+.title1 {
+  font-size: 26rpx;
+  color: #a9abb2;
+  line-height: 1em;
+}
+.title2 {
+  margin: 17rpx 0;
+  font-size: 40rpx;
+  color: #2b3642;
+}
+.title3 {
+  display: inline-block;
+  width: auto;
+  margin: 0 auto;
+  border-radius: 50rpx;
+  background-color: #2b3642;
+  font-size: 28rpx;
+  line-height: 46rpx;
+  padding: 0 55rpx;
+  color: #fff;
+}
+.create-btn {
+  display: block;
+  margin: 120rpx auto 0;
+  width: 500rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #e57557;
+  color: #fff;
+  font-size: 48rpx;
+}
+.img-block {
+  background-color: #2b3642;
+}
+image {
+  display: block;
+  width: 530rpx;
+  height: 630rpx;
+  margin: 0 auto;
+}
