@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/user/line/my/my",
+
     "pages/welcome/welcome",
     "pages/user/detail/detail",
     "pages/user/report/report",
@@ -11,11 +13,11 @@
     "pages/judgment/status/status",
     "pages/user/line/all/all",
     "pages/user/home/home",
-    "pages/user/line/my/my",
     "pages/user/register/two/msg_success",
     "pages/user/about/about",
     "pages/user/notice/notice",
-    "pages/getphone/getphone"
+    "pages/getphone/getphone",
+    "pages/user/resultdetail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

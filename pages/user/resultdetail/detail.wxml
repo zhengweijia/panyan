@@ -1,0 +1,41 @@
+<view class="report">
+  <view>
+    <swiper indicator-dots="{{indicatorDots}}"
+            autoplay="{{autoplay}}" duration="{{duration}}">
+
+      <!--title1:'',-->
+      <!--title2: {-->
+      <!--difficult:'',-->
+      <!--time:''-->
+      <!--},-->
+      <!--title3:'',-->
+      <block wx:for="{{blockList}}" wx:key="title1">
+        <swiper-item>
+          <view class="img-block">
+            <image src="{{avatar_url}}" class="slide-image"/>
+          </view>
+          <view class="title-block">
+            <view class="title1">{{item.title1}}</view>
+            <view class="title2">
+              <ul>
+                <li>难度系数 <span>{{item.title2.difficult}}</span></li>
+                <li>时长 <span>{{item.title2.time}}</span></li>
+              </ul>
+            </view>
+            <view class="title3">新增奖金 <span>￥{{item.title3}}</span></view>
+
+            <view class="desc">根据比赛规则，选手攀登成功后可平分该条线路的奖金。如果线路继续被其他选手攀爬成功，则您的奖金会降低。所以攀爬更多的线路是诀窍。</view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <button class="create-btn">我知道啦</button>
+  </view>
+
+</view>
+
+
+
+
+

@@ -53,6 +53,7 @@ Page({
 				}
 
 			}
+			app.globalData.resultList = that.data.viewData.resultList; // 传给详情页面的数据
 
 			that.setData({
 				userInfo: that.data.userInfo,
