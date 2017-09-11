@@ -18,7 +18,7 @@
       </block>
     </swiper>
 
-    <button class="create-btn">生成海报</button>
+    <button bindtap="create" class="create-btn">生成海报</button>
   </view>
 
   <view class="no-data" wx:if="{{!showReport}}">

@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/user/line/my/my",
+    "pages/user/report/report",
 
     "pages/welcome/welcome",
+    "pages/user/line/my/my",
     "pages/user/detail/detail",
-    "pages/user/report/report",
     "pages/user/register/two/register",
     "pages/user/register/one/register",
     "pages/judgment/register/judgment",
@@ -17,7 +17,8 @@
     "pages/user/about/about",
     "pages/user/notice/notice",
     "pages/getphone/getphone",
-    "pages/user/resultdetail/detail"
+    "pages/user/resultdetail/detail",
+    "pages/user/share/share"
   ],
   "window": {
     "backgroundTextStyle": "light",

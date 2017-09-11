@@ -21,15 +21,15 @@ Page({
 				className: 'img2',
 
 				title1:'完成的线路最高难度为',
-				title2:'5.14',
-				title3:'仅有 3 人完攀',
+				title2:'',
+				title3:'',
 			},
 			{
 				img: config.staticUrl+'/img/report/3.png',
 				className: 'img3',
 
 				title1:'你一共完成了',
-				title2:'15 条线路',
+				title2:'',
 				title3:'',
 			},
 			{
@@ -37,8 +37,8 @@ Page({
 				className: 'img4',
 
 				title1:'最快完成线路用时',
-				title2:'1小时45分56秒',
-				title3:'超过 98% 的选手',
+				title2:'',
+				title3:'',
 			}
 		],
 		showReport: false,
@@ -81,11 +81,18 @@ Page({
 						blockList: that.data.blockList,
 						showReport: true
 					});
+
+
+					app.globalData.reportData = data;
 				}
 			}
 		});
   },
-
+	create: function () {
+		wx.navigateTo({
+		  url: '/pages/user/share/share'
+		})
+	},
 	onPullDownRefresh: function () {
 		wx.stopPullDownRefresh();
 	},

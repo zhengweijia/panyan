@@ -1,7 +1,7 @@
 <view class="report">
   <view>
     <swiper indicator-dots="{{indicatorDots}}"
-            autoplay="{{autoplay}}" duration="{{duration}}">
+            autoplay="{{autoplay}}" duration="{{duration}}" current="{{current}}">
 
       <!--title1:'',-->
       <!--title2: {-->
@@ -30,7 +30,7 @@
       </block>
     </swiper>
 
-    <button class="create-btn">我知道啦</button>
+    <button bindtap="back" class="create-btn">我知道啦</button>
   </view>
 
 </view>

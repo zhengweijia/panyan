@@ -1,0 +1,9 @@
+/* pages/user/share/share.wxss */
+canvas {
+  width: 750rpx;
+  height: 1207rpx;
+}
+
+.weui-loadmore {
+  padding-top: 70rpx;
+}

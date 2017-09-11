@@ -16,15 +16,16 @@ Page({
 		showReport: false,
 		indicatorDots: true,
 		autoplay: false,
-		duration: 100
+		duration: 100,
+		current: 0, //当前所在index
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		// if(!!app && !!app.globalData.resultList && !!app.globalData.resultList.length > 0) {
-		if(true) {
+  	let id = options.id; //当前预览的id
+		if(!!app && !!app.globalData.resultList && !!app.globalData.resultList.length > 0) {
 			let blockList = [];
 			for(let result of app.globalData.resultList) {
 				let obj = {
@@ -43,10 +44,15 @@ Page({
 				obj.title3 = result.line.preMoney;
 
 				blockList.push(obj);
+
+				if(result.id == id) {
+					this.data.current = blockList.length -1;
+				}
 			}
 			this.setData({
 				avatar_url: app.globalData.userInfo.avatar_url,
-				blockList: blockList
+				blockList: blockList,
+				current: this.data.current
 			})
 		} else {
 			//	如果列表页面没有传送数据，则返回到 home
@@ -55,7 +61,12 @@ Page({
 			});
 		}
   },
-
+	back: function () {
+		//返回上一页
+		wx.navigateBack({
+			delta: 1
+		});
+	},
 
 	onPullDownRefresh: function () {
 		this.update(()=>{
@@ -66,4 +77,4 @@ Page({
 	onShareAppMessage: function (res) {
 		return app.commonShareAppMessage(res);
 	}
-})
+});
