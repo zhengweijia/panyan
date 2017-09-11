@@ -36,6 +36,7 @@ Page({
 			if(!!data.hadMoney) that.data.viewData.money = data.hadMoney;
 			if(!!data.finishLineNum) that.data.viewData.ranking = data.finishLineNum;
 			if(!!data.resultList){
+				that.data.viewData.resultList = [];
 				// 预先处理数据，时间格式之类的
 				for (let res of data.resultList) {
 					// 完成时间

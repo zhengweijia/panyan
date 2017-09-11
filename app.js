@@ -34,6 +34,10 @@ App({
 					this.globalData.userInfo = result.data.data.userInfo;
 					this.globalData.userInfo.nickName  = this.globalData.userInfo.nick;
 					this.globalData.userInfo.openId = this.globalData.userInfo.openid;
+
+					if(!this.globalData.userInfo.avatar_url && !!this.globalData.userInfo.avatarUrl) {
+						this.globalData.userInfo.avatar_url = this.globalData.userInfo.avatarUrl;
+					}
 				}
 
 				if(!!result && !!result.data && result.data.code == '0') {
@@ -99,6 +103,10 @@ App({
 				if(!!result.data.data && !!result.data.data.userInfo) {
 					this.globalData.userInfo = result.data.data.userInfo;
 					this.globalData.userInfo.nick = this.globalData.userInfo.nickName;
+					this.globalData.userInfo.openid = this.globalData.userInfo.openId;
+					if(!this.globalData.userInfo.avatar_url && !!this.globalData.userInfo.avatarUrl) {
+						this.globalData.userInfo.avatar_url = this.globalData.userInfo.avatarUrl;
+					}
 					this.globalData.userInfo.openid = this.globalData.userInfo.openId;
 					ret.userInfo = this.globalData.userInfo;
 				}
