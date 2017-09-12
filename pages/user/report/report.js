@@ -53,6 +53,9 @@ Page({
    */
   onLoad: function (options) {
   	let that = this;
+  	if(!app.globalData.userInfo) {
+			app.checkRegisterAndRedirectTo();
+		}
 		// 请求配置，看现在能不能提取现金
 		qcloud.request({
 			// 检查有没有注册

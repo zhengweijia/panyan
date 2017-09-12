@@ -94,7 +94,9 @@ Page({
 
 	// 提现
 	getMoney: function () {
-
+		wx.navigateTo({
+			url: '/pages/user/wechatid/wechatid'
+		})
 	},
   /**
    * 生命周期函数--监听页面初次渲染完成

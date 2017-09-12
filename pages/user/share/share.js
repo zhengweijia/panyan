@@ -1,4 +1,5 @@
 // pages/user/resultdetail/detail.js
+
 const app = getApp();
 let config = require('../../../config');
 // 引入 QCloud 小程序增强 SDK
@@ -9,22 +10,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-  	bgImg: config.staticUrl+'/img/page-01.jpg',
-		show: false
+  	bgImg: config.staticUrl+'/img/bg.png',
+		show: false,
+		canvasWidth: 0,
+		canvasHeight: 0,
+
+		width: 0,
+		height: 0,
+
+		textMap: {
+  		t1: '谁谁谁的成绩单',
+  		t2: '14',
+  		t3: '3728',
+
+  		t4: '1小时5分15秒',
+  		t5: '超过98%的参赛选手',
+
+  		t6: '5.15a',
+  		t7: '仅有3人完攀',
+		}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  	if(!!app.globalData && !!app.globalData.reportData) {
+		let that = this;
+
+		if(!!app.globalData && !!app.globalData.reportData) {
   		let data = app.globalData.reportData;
-			let money = data.money+' 元';
-
-			let difficulty = data.maxLineDifficulty[config.useLineDifficultyStandard];
-			let num = '仅有 '+data.maxDifficultyUserNum+' 人完攀';
-
-			let finishNum = data.finishNum+' 条线路';
 
 			//title2:'1小时45分56秒',
 			// title3:'超过 98% 的选手',
@@ -32,33 +46,23 @@ Page({
 			let hh = Math.floor( time / 60 / 60);
 			let mm = Math.floor( time / 60 % 60);
 			let ss = Math.floor( time % 60);
-			let fastTime = hh+'小时'+mm+'分'+ss+'秒';
-			let rate = '超过 '+data.fastTimeRate+' 的选手';
 
+			this.data.textMap.t1 = app.globalData.userInfo.name+'的成绩单';
+			this.data.textMap.t2 = data.finishNum;
+			this.data.textMap.t3 = data.money;
+			this.data.textMap.t4 = hh+'小时'+mm+'分'+ss+'秒';
+			this.data.textMap.t5 = '超过'+data.fastTimeRate+'的选手';
+			this.data.textMap.t6 = data.maxLineDifficulty[config.useLineDifficultyStandard];
+			this.data.textMap.t7 = '仅有'+data.maxDifficultyUserNum+'人完攀';
 
-			// 使用 wx.createContext 获取绘图上下文 context
-			// let context = wx.createCanvasContext('share-canvas')
+			wx.getSystemInfo({
+				success: function(res) {
+					that.data.width = res.windowWidth;
+					that.data.height = res.windowHeight;
+				}
+			});
+			this.drawImage();
 
-			// context.setStrokeStyle("#00ff00");
-			// context.setLineWidth(5);
-			// context.rect(0, 0, 200, 200);
-			// context.stroke();
-			// context.setStrokeStyle("#ff0000");
-			// context.setLineWidth(2);
-			// context.moveTo(160, 100);
-			// context.arc(100, 100, 60, 0, 2 * Math.PI, true);
-			// context.moveTo(140, 100);
-			// context.arc(100, 100, 40, 0, Math.PI, false);
-			// context.moveTo(85, 80);
-			// context.arc(80, 80, 5, 0, 2 * Math.PI, true);
-			// context.moveTo(125, 80);
-			// context.arc(120, 80, 5, 0, 2 * Math.PI, true);
-			// context.stroke();
-			// context.draw();
-
-			this.setData({
-				show: true
-			})
 		} else {
 			//返回上一页
 			wx.navigateBack({
@@ -67,12 +71,94 @@ Page({
 		}
   },
 
+	drawImage: function () {
+		let that = this;
+		wx.getImageInfo({
+			src: this.data.bgImg,
+			success: function (res) {
+				// 计算canvas宽高，刚好跟图片一样比例
+				let imgWidth = res.width;
+				let imgHeight = res.height;
+				let imgrate = imgHeight/imgWidth;
+				let sumRate = that.data.width/imgWidth;
 
-	imageLoad:function(e){
-		let context = wx.createCanvasContext('share-canvas')
-		let img = e.currentTarget;
-		context.drawImage(img,10,10,240,160);
-		context.draw();
+				that.data.canvasWidth = that.data.width;
+				that.data.canvasHeight = that.data.canvasWidth * imgrate;
+				that.setData({
+					canvasWidth: that.data.canvasWidth,
+					canvasHeight: that.data.canvasHeight,
+					show: true,
+				});
+
+				let textMap = that.data.textMap;
+				let context = wx.createCanvasContext('share-canvas');
+
+				context.drawImage(res.path,0,0,that.data.canvasWidth, that.data.canvasHeight);
+
+				// 姓名
+				context.setFontSize(parseInt(sumRate*36));
+				context.setFillStyle('#FFFFFF');
+				context.fillText(textMap.t1, parseInt(sumRate*60),parseInt(sumRate*176));
+
+				// 完成线路数量
+				context.setFontSize(parseInt(sumRate*65));
+				context.setFillStyle('#F8B62D');
+				context.fillText(textMap.t2, parseInt(sumRate*410),parseInt(sumRate*415));
+
+				// 奖金
+				context.setFontSize(parseInt(sumRate*60));
+				context.setFillStyle('#F8B62D');
+				context.fillText(textMap.t3, parseInt(sumRate*260),parseInt(sumRate*585));
+
+				// 时间
+				context.setFontSize(parseInt(sumRate*36));
+				context.setFillStyle('#F8B62D');
+				context.fillText(textMap.t4, parseInt(sumRate*310),parseInt(sumRate*752));
+				context.setFontSize(parseInt(sumRate*20));
+				context.setFillStyle('#FFFFFF');
+				context.fillText(textMap.t5, parseInt(sumRate*320),parseInt(sumRate*787));
+
+				// 难度
+				context.setFontSize(parseInt(sumRate*55));
+				context.setFillStyle('#F8B62D');
+				context.fillText(textMap.t6, parseInt(sumRate*190),parseInt(sumRate*950));
+				context.setFontSize(parseInt(sumRate*20));
+				context.setFillStyle('#FFFFFF');
+				context.fillText(textMap.t7, parseInt(sumRate*210),parseInt(sumRate*980));
+
+				context.draw();
+			},
+			fail: function(e){
+				console.log(e);
+			}
+		})
+	},
+
+	create : function () {
+		let that = this;
+		wx.canvasToTempFilePath({
+			canvasId: 'share-canvas',
+			success: function(res) {
+				wx.saveImageToPhotosAlbum({
+					filePath: res.tempFilePath,
+					success: function (res1) {
+						console.log(res1)
+						wx.showToast({
+							title: '已存到相册',
+							icon: 'success',
+							duration: 3000
+						});
+					},
+					fail: function (res1) {
+						wx.showToast({
+							title: '保存失败',
+							icon: '',
+							duration: 3000
+						});
+					}
+				})
+			}
+		})
 	},
 
   /**
@@ -83,9 +169,7 @@ Page({
   },
 
 	onPullDownRefresh: function () {
-		this.update(()=>{
-			wx.stopPullDownRefresh();
-		});
+		wx.stopPullDownRefresh();
 	},
 
 	onShareAppMessage: function (res) {

@@ -1,9 +1,16 @@
 /* pages/user/share/share.wxss */
-canvas {
-  width: 750rpx;
-  height: 1207rpx;
+.share {
+  padding-bottom: 114rpx;
+  padding-bottom: 1114rpx;
 }
 
 .weui-loadmore {
   padding-top: 70rpx;
+}
+
+.weui-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0;
 }

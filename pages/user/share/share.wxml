@@ -1,10 +1,9 @@
 <!--pages/user/share/share.wxml-->
-<view>
+<view class="share">
   <view wx:if="{{show}}">
-    <canvas canvas-id='share-canvas'></canvas>
+    <canvas canvas-id='share-canvas' style="width: {{canvasWidth}}px;height: {{canvasHeight}}px"></canvas>
 
-    <image id="img"  bindload="imageLoad" src="{{bgImg}}" style="display: none;"></image>
-
+    <button class="weui-btn" bindtap="create" type="primary" >保存图片</button>
   </view>
   <view class="page__bd" wx:if="{{!show}}">
     <view class="weui-loadmore">

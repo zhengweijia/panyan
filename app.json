@@ -1,8 +1,12 @@
 {
   "pages": [
-    "pages/user/report/report",
-
     "pages/welcome/welcome",
+
+    "pages/user/wechatid/wechatid",
+
+
+    "pages/user/report/report",
+    "pages/user/share/share",
     "pages/user/line/my/my",
     "pages/user/detail/detail",
     "pages/user/register/two/register",
@@ -17,8 +21,7 @@
     "pages/user/about/about",
     "pages/user/notice/notice",
     "pages/getphone/getphone",
-    "pages/user/resultdetail/detail",
-    "pages/user/share/share"
+    "pages/user/resultdetail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
