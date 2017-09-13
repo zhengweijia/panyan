@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  	bgImg: config.staticUrl+'/img/bg.png',
+  	bgImg: config.staticUrl+'/img/bg.jpg',
 		show: false,
 		canvasWidth: 0,
 		canvasHeight: 0,
@@ -98,7 +98,7 @@ Page({
 				// 姓名
 				context.setFontSize(parseInt(sumRate*36));
 				context.setFillStyle('#FFFFFF');
-				context.fillText(textMap.t1, parseInt(sumRate*60),parseInt(sumRate*176));
+				context.fillText(textMap.t1, parseInt(sumRate*70),parseInt(sumRate*176));
 
 				// 完成线路数量
 				context.setFontSize(parseInt(sumRate*65));
@@ -116,7 +116,8 @@ Page({
 				context.fillText(textMap.t4, parseInt(sumRate*310),parseInt(sumRate*752));
 				context.setFontSize(parseInt(sumRate*20));
 				context.setFillStyle('#FFFFFF');
-				context.fillText(textMap.t5, parseInt(sumRate*320),parseInt(sumRate*787));
+				// context.fillText(textMap.t5, parseInt(sumRate*320),parseInt(sumRate*787));
+				context.fillText(textMap.t5, parseInt(sumRate*340),parseInt(sumRate*787));
 
 				// 难度
 				context.setFontSize(parseInt(sumRate*55));
@@ -135,14 +136,14 @@ Page({
 	},
 
 	create : function () {
-		let that = this;
+		wx.showLoading({title:'正在生成'});
 		wx.canvasToTempFilePath({
 			canvasId: 'share-canvas',
 			success: function(res) {
 				wx.saveImageToPhotosAlbum({
 					filePath: res.tempFilePath,
 					success: function (res1) {
-						console.log(res1)
+						wx.hideLoading();
 						wx.showToast({
 							title: '已存到相册',
 							icon: 'success',
@@ -152,7 +153,7 @@ Page({
 					fail: function (res1) {
 						wx.showToast({
 							title: '保存失败',
-							icon: '',
+							icon: '11',
 							duration: 3000
 						});
 					}
@@ -160,7 +161,19 @@ Page({
 			}
 		})
 	},
+	longpress: function () {
+  	let that = this;
+		wx.showModal({
+			title: '保存图片',
+			success: function(res) {
+				if (res.confirm) {
+					that.create();
+				} else if (res.cancel) {
+				}
+			}
+		})
 
+	},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

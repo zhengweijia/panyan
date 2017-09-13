@@ -135,7 +135,6 @@ Page({
 				method: 'POST',
 				data: this.data.regUserInfo,
 				success: (result) => {
-					console.log(result);
 					if(result.data.code == '0') {
 						wx.showToast({
 							title: '注册成功',

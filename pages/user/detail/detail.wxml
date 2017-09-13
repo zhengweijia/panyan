@@ -27,7 +27,7 @@
 
     <view class="add-btn">
       <button class="weui-btn" type="warn" wx:if="{{!canGetMonet}}" disabled>大赛结束后可领取奖金</button>
-      <button class="weui-btn" bindtap="getMoney" type="primary"  wx:if="{{canGetMonet}}">领取奖金</button>
+      <button class="weui-btn" bindtap="getMoney" type="primary"  wx:if="{{canGetMonet}}">怎么领取奖金？</button>
     </view>
   </view>
   <view class="no-data" wx:if="{{!viewData || viewData.resultList.length <= 0}}">

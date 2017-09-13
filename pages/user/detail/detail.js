@@ -94,8 +94,15 @@ Page({
 
 	// 提现
 	getMoney: function () {
-		wx.navigateTo({
-			url: '/pages/user/wechatid/wechatid'
+		// wx.navigateTo({
+		// 	url: '/pages/user/wechatid/wechatid'
+		// })
+		wx.showModal({
+			// title: '如何领取奖金？',
+			content:'请耐心等待，格凸攀岩节工作人员会在比赛结束后，现场发放比赛奖金。',
+			showCancel: false,
+			success: function(res) {
+			}
 		})
 	},
   /**

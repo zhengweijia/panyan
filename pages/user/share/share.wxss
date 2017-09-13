@@ -1,7 +1,7 @@
 /* pages/user/share/share.wxss */
 .share {
-  padding-bottom: 114rpx;
-  padding-bottom: 1114rpx;
+  /*padding-bottom: 114rpx;*/
+  /*padding-bottom: 1114rpx;*/
 }
 
 .weui-loadmore {
@@ -9,8 +9,10 @@
 }
 
 .weui-btn {
-  position: fixed;
+  /*position: fixed;*/
   bottom: 0;
+  margin: 0;
   width: 100%;
   border-radius: 0;
+  z-index: 100;
 }

@@ -1,6 +1,6 @@
 <!--pages/user/share/share.wxml-->
-<view class="share">
-  <view wx:if="{{show}}">
+<view class="share" bindlongpress="longpress">
+  <view wx:if="{{show}}" >
     <canvas canvas-id='share-canvas' style="width: {{canvasWidth}}px;height: {{canvasHeight}}px"></canvas>
 
     <button class="weui-btn" bindtap="create" type="primary" >保存图片</button>

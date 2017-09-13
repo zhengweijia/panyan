@@ -143,7 +143,6 @@ Page({
 			confirmText: "确定",
 			cancelText: "取消",
 			success: function (res) {
-				console.log(res);
 				if (res.confirm) {
 					//发送请求开始
 					qcloud.request({
