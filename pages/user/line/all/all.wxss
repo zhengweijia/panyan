@@ -31,8 +31,8 @@
 }
 .top>view:last-child {
   border-left: 1rpx solid #e5e5e5;
-  /*background-image: url("https://64757925.qcloud.la/static/img/line/icon-3.png");*/
-  background-image: url("https://58811893.qcloud.la/static/img/line/icon-3.png");
+  background-image: url("https://64757925.qcloud.la/static/img/line/icon-3.png");
+  /*background-image: url("https://58811893.qcloud.la/static/img/line/icon-3.png");*/
   background-repeat: no-repeat;
   background-size: auto 30rpx;
   background-position: 125rpx center;
