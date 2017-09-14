@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  	bgImg: config.staticUrl+'/img/bg.jpg',
+  	bgImg: config.staticUrl+'/img/bg-2.jpg',
 		show: false,
 		canvasWidth: 0,
 		canvasHeight: 0,
