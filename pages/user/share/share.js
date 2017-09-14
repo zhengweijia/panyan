@@ -19,15 +19,15 @@ Page({
 		height: 0,
 
 		textMap: {
-  		t1: '谁谁谁的成绩单',
-  		t2: '14',
-  		t3: '3728',
+  		t1: '',
+  		t2: '',
+  		t3: '',
 
-  		t4: '1小时5分15秒',
-  		t5: '超过98%的参赛选手',
+  		t4: '',
+  		t5: '',
 
-  		t6: '5.15a',
-  		t7: '仅有3人完攀',
+  		t6: '',
+  		t7: '',
 		}
   },
 
@@ -43,9 +43,9 @@ Page({
 			//title2:'1小时45分56秒',
 			// title3:'超过 98% 的选手',
 			let time = data.fastTime;
-			let hh = Math.floor( time / 60 / 60);
-			let mm = Math.floor( time / 60 % 60);
-			let ss = Math.floor( time % 60);
+			let hh = Math.floor( time/1000 / 60 / 60);
+			let mm = Math.floor( time/1000 / 60 % 60);
+			let ss = Math.floor( time/1000 % 60);
 
 			this.data.textMap.t1 = app.globalData.userInfo.name+'的成绩单';
 			this.data.textMap.t2 = data.finishNum;

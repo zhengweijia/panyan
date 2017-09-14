@@ -74,9 +74,9 @@ Page({
 					//title2:'1小时45分56秒',
 					// title3:'超过 98% 的选手',
 					let time = data.fastTime;
-					let hh = Math.floor( time / 60 / 60);
-					let mm = Math.floor( time / 60 % 60);
-					let ss = Math.floor( time % 60);
+					let hh = Math.floor( time/1000 / 60 / 60);
+					let mm = Math.floor( time/1000 / 60 % 60);
+					let ss = Math.floor( time/1000 % 60);
 					that.data.blockList[3].title2 = hh+'小时'+mm+'分'+ss+'秒';
 					that.data.blockList[3].title3 = '超过 '+data.fastTimeRate+' 的选手';
 
