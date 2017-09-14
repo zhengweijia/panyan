@@ -12,7 +12,7 @@
 
   <view class="weui-panel weui-panel_access" wx:if="{{viewData.resultList.length > 0}}">
     <view class="weui-panel__bd" >
-      <navigator url="" wx:for="{{viewData.resultList}}" wx:key="id" class="weui-media-box weui-media-box_appmsg detail" hover-class="weui-cell_active">
+      <navigator url="/pages/user/resultdetail/detail?id={{item.id}}" wx:for="{{viewData.resultList}}" wx:key="id" class="weui-media-box weui-media-box_appmsg detail" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg diffcult-{{item.line.lineDifficulty.zoomIndex}}">
           {{item.line.lineDifficulty[useLineDifficultyStandard]}}
         </view>

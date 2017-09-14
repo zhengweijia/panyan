@@ -1,0 +1,14 @@
+<!--pages/user/share/share.wxml-->
+<view class="share" bindlongpress="longpress">
+  <view wx:if="{{show}}" >
+    <canvas canvas-id='share-canvas' style="width: {{canvasWidth}}px;height: {{canvasHeight}}px"></canvas>
+
+    <button class="weui-btn" bindtap="create" type="primary" >保存图片</button>
+  </view>
+  <view class="page__bd" wx:if="{{!show}}">
+    <view class="weui-loadmore">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+  </view>
+</view>

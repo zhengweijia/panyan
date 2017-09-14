@@ -1,0 +1,75 @@
+/* report.wxss */
+page {
+  background-color: #fff;
+}
+.report swiper {
+  height: 950rpx;
+}
+.title-block {
+  padding: 25rpx 0;
+  text-align: center;
+}
+.img-block {
+  background-color: #fff;
+}
+.img-block image {
+  display: block;
+  width: 290rpx;
+  height: 290rpx;
+  border-radius: 50%;
+  margin: 80rpx auto 60rpx;
+}
+
+.title-block {
+  padding: 0 80rpx;
+  color: #5a5f6e;
+  line-height: 1em;
+
+}
+.title1 {
+  /*line-height: 1em;*/
+  font-size: 33rpx;
+  text-align: center;
+  line-height: 1.7em;
+}
+.title2 {
+  margin: 17rpx 14rpx 50rpx;
+  overflow: hidden;
+}
+.title2 ul {
+  overflow: hidden;
+}
+.title2 li {
+  float: left;
+  font-size: 24rpx;
+}
+.title2 li span {
+  color: #e57557;
+}
+.title2 ul li:last-child {
+  float: right;
+}
+.title3 {
+  text-align: center;
+  font-size: 36rpx;
+}
+.title3 span{
+  color: #e57557;
+}
+.desc {
+  font-size: 24rpx;
+  line-height: 2em;
+  margin-top: 60rpx;
+  text-align: left;
+}
+.create-btn {
+  display: block;
+  margin: 120rpx auto 0;
+  width: 650rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #e57557;
+  color: #fff;
+  font-size: 48rpx;
+}
+

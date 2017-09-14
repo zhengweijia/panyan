@@ -1,8 +1,14 @@
 {
   "pages": [
     "pages/welcome/welcome",
-    "pages/user/detail/detail",
+
+    "pages/user/wechatid/wechatid",
+
+
     "pages/user/report/report",
+    "pages/user/share/share",
+    "pages/user/line/my/my",
+    "pages/user/detail/detail",
     "pages/user/register/two/register",
     "pages/user/register/one/register",
     "pages/judgment/register/judgment",
@@ -11,11 +17,11 @@
     "pages/judgment/status/status",
     "pages/user/line/all/all",
     "pages/user/home/home",
-    "pages/user/line/my/my",
     "pages/user/register/two/msg_success",
     "pages/user/about/about",
     "pages/user/notice/notice",
-    "pages/getphone/getphone"
+    "pages/getphone/getphone",
+    "pages/user/resultdetail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

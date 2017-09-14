@@ -1,0 +1,24 @@
+<!--register.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block>
+      <image class="userinfo-avatar" src="{{regUserInfo.avatar_url}}" background-size="cover"></image>
+    </block>
+
+  </view>
+  <view class="notice">确认微信号</view>
+  <view class="detail">请输入您的微信号，工作人员将在 5 个工作日内与您取得联系，将奖金转账给您。</view>
+  <view class="hasid" wx:if="{{hasId!==''}}">您已经保存过微信号：{{hasId}}，重新提交会将其覆盖</view>
+
+  <view class="reg-form">
+    <form bindsubmit="formSubmit">
+
+      <label class="title-label" for="wechat_id">微信号 <text class="error-msg">{{errorMsg.wechat_id}}</text></label>
+      <view class="section input-section">
+        <input id="wechat_id" bindblur="bindBlur" class="default"  type="text" placeholder="请输入您的微信号" focus />
+      </view>
+
+      <button class="custom-btn {{submitButtonStatus}}" form-type="submit" type="primary" size="default" disabled="{{!submitButtonStatus}}" hover-class="button-hover"> 保存 </button>
+    </form>
+  </view>
+</view>
