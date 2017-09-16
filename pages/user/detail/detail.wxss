@@ -32,7 +32,7 @@
 }
 
 .top .all-money {
-  margin-top: 90rpx;
+  margin-top: 40rpx;
 }
 .top .all-money text{
   padding: 0 18rpx;
@@ -46,6 +46,14 @@
   display: inline-block;
 
   box-shadow:0 0 10rpx #F56E4E;
+}
+
+.report-notice {
+  font-size: 24rpx;
+  color: #fff;
+  padding: 20rpx 30rpx 0;
+  line-height: 32rpx;
+
 }
 
 .no-data {

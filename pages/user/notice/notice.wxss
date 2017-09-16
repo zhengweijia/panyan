@@ -2,3 +2,7 @@
 .page {
   padding: 30rpx;
 }
+
+.report-notice {
+  color: #d16d62;
+}

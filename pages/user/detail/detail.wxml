@@ -5,6 +5,7 @@
     <view class="num"><text >{{viewData.money}}</text>元</view>
 
     <view class="all-money"><text>您当前奖金排名 {{ranking}}</text></view>
+    <view class="report-notice">由于部分选手无法通过微信报名，成绩需人工统计，最终奖金以裁判组现场公示成绩单为准。</view>
   </view>
 
   <view class="weui-panel weui-panel_access" wx:if="{{viewData.resultList.length > 0}}">

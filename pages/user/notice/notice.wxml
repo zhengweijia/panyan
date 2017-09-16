@@ -8,6 +8,10 @@
         <view class="weui-article__section">
 
           <view class="weui-article__section">
+            <view class="weui-article__h3 report-notice">由于部分选手无法通过微信报名，成绩需人工统计，最终奖金以裁判组现场公示成绩单为准。</view>
+          </view>
+
+          <view class="weui-article__section">
             <view class="weui-article__h3">1 报名截止时间为 2017 年 9 月 1日 12:00。联系人:杨获成 联系电话:18785057668
             </view>
           </view>
